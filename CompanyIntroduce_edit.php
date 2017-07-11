@@ -1,3 +1,17 @@
+<?php
+mysql_connect("localhost","root","131313677"); //連結伺服器
+mysql_select_db("company"); //選擇資料庫
+mysql_query("set names utf8"); //以utf-8讀取資料，讓資料可以讀取中文
+$data=mysql_query("select * from companyIntroduce"); //從contact資料庫中選擇所有的資料表
+$rs=mysql_fetch_row($data);
+if($_POST['editor1']!='')
+{
+    mysql_query("update companyintroduce set companyIntroduce = '$_POST[editor1]'");
+    header("location:CompanyIntroduce.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -240,12 +254,10 @@ desired effect
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body pad">
-                                <form>
+                                <form method="post">
                                     <textarea id="editor1" name="editor1" rows="10" cols="80">
-                                           這是我試著輸入的並且儲存進資料庫的
-                                           也是我把資料庫的資料抓出來放的地方
                                     <?php
-
+                                    echo "$rs[0]";
                                     ?>
                                     <script type="text/javascript">
                                         var content = Document.getElementById('editor1').value;

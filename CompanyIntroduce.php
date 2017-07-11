@@ -1,3 +1,10 @@
+<?php
+mysql_connect("localhost","root","131313677"); //連結伺服器
+mysql_select_db("company"); //選擇資料庫
+mysql_query("set names utf8"); //以utf-8讀取資料，讓資料可以讀取中文
+$data=mysql_query("select * from companyIntroduce"); //從contact資料庫中選擇所有的資料表
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -212,11 +219,6 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                    <a href="CompanyIntroduce_edit.php">
-                        <button type="link" pull-right class="btn btn-primary">
-                        編輯
-                        </button>
-                    </a>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">公司簡介</li>
@@ -230,13 +232,26 @@ desired effect
                 <!--------------------------
                 | Your Page Content Here |
                 -------------------------->
-
                 <!--
                 <h1>
                     從資料庫抓公司簡介的資料顯示於網頁上
                     <small></small>
                 </h1>
                 -->
+                <?php
+                for($i=1;$i<=mysql_num_rows($data);$i++)
+                {
+                    $rs = mysql_fetch_row($data);
+                ?>
+                <?php echo $rs[0] ?>
+                <?php
+                }
+                ?>
+                <a href="CompanyIntroduce_edit.php">
+                    <button type="link" pull-right class="btn btn-primary">
+                    編輯
+                    </button>
+                </a>
             </section>
             <!-- /.content -->
         </div>
