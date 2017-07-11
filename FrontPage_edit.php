@@ -274,7 +274,7 @@ desired effect
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header"></li>
                     <li>
-                        <a href="FrontPage.php"><i class="fa fa-link"></i> <span>首頁</span>
+                        <a href="FrontPage.php"><i class="fa fa-edit"></i> <span>首頁</span>
                     </a>
                     </li>
 
@@ -322,7 +322,7 @@ desired effect
                     <!-- <li><a href="#"><i class="fa fa-link"></i> <span>公司簡介</span></a></li> -->
                     <li>
                         <a href="CompanyIntroduce.php">
-                            <i class="fa fa-edit"></i> <span>公司簡介</span>
+                            <i class="fa fa-link"></i> <span>公司簡介</span>
                             <!--
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right">
@@ -341,7 +341,6 @@ desired effect
                         -->
                     </li>
                     <li><a href="ConnectWays.php"><i class="fa fa-link"></i> <span>聯絡方式</span></a></li>
-
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
@@ -353,47 +352,76 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <!--
-                <h1>
-                    從資料庫抓公司簡介的資料顯示於頁面
-                    <small></small>
-                </h1>
-                -->
-                    <a href="CompanyIntroduce_edit.php">
-                        <button type="link" pull-right class="btn btn-primary">
-                        編輯
-                        </button>
-                    </a>
+                <h1>編輯首頁</h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
-                    <li class="active">公司簡介</li>
+                    <li class="active">首頁</li>
+                    <li class="active">編輯首頁</li>
                 </ol>
-
             </section>
 
             <!-- Main content -->
-            <section class="content container-fluid">
-
-                <!--------------------------
-                | Your Page Content Here |
-                -------------------------->
-
+        
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h3 class="box-title">CK 編輯器
+                                    <small>Advanced and full of features</small>
+                                </h3>
+                                <!-- tools box 
+                                <div class="pull-right box-tools">
+                                    <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                     <i class="fa fa-minus"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                    <i class="fa fa-times"></i></button>
+                                </div>
+                                 /. tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body pad">
+                                <form>
+                                    <textarea id="editor1" name="editor1" rows="10" cols="80">
+                                           這是我試著輸入的地方
+                                           也是我把資料庫的資料抓出來放的地方
+                                    <?php
+                                    var content = Document.getElementById('editor1').value;
+                                    ?>
+                                    </textarea>
+                                    <!-- ***Store Button*** -->
+                                    <div class="pull-right">
+                                        <button type="link" pull-right class="btn btn-flat">取消編輯</button>
+                                    </div>
+                                    <!-- ***Store Button*** -->
+                                    <div class="pull-left">
+                                        <button type="submit" pull-left class="btn btn-primary">儲存編輯</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <!-- /.col-->
+                </div>
+                <!-- ./row -->
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
         <!-- Main Footer -->
         <footer class="main-footer">
             <!-- To the right -->
             <div class="pull-right hidden-xs">
-
             </div>
             <!-- Default to the left -->
             <strong>Copyright &copy; 2017 <a href="#">精德實業股份有限公司</a>.</strong>
         </footer>
-        <!-- ./wrapper -->
 
+       
+
+        <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+        <!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->
 
@@ -401,9 +429,25 @@ desired effect
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- FastClick -->
+        <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
-
+        <!-- AdminLTE for demo purposes -->
+        <script src="../../dist/js/demo.js"></script>
+        <!-- ******CK Editor****** -->
+        <script src="bower_components/ckeditor/ckeditor.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <script>
+        $(function() {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor1')
+                //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5()
+        })
+        </script>
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
         Both of these plugins are recommended to enhance the
         user experience. -->

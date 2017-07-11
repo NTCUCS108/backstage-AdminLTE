@@ -355,28 +355,20 @@ desired effect
             <section class="content-header">
                 <!--
                 <h1>
-                    從資料庫抓聯絡方式的資料
-                    <small></small>
+                    編輯聯絡方式
+                    <small>從資料庫抓聯絡方式的資料</small>
                 </h1>
                 -->
-                    <button type="link" pull-right class="btn btn-primary">編輯</button>
-
+                <button type="link" pull-right class="btn btn-primary">編輯</button>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">聯絡方式</li>
                 </ol>
-
             </section>
 
             <!-- Main content -->
-            <section class="content container-fluid">
+        
 
-                <!--------------------------
-                | Your Page Content Here |
-                -------------------------->
-
-            </section>
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
 
@@ -395,16 +387,34 @@ desired effect
 
         <!-- REQUIRED JS SCRIPTS -->
 
+
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- FastClick -->
+        <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="../../dist/js/demo.js"></script>
+        <!-- ******CK Editor****** -->
+        <script src="bower_components/ckeditor/ckeditor.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <script>
+        $(function() {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor1')
+                //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5()
+        })
+        </script>
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+        Both of these plugins are recommended to enhance the
+        user experience. -->
 </body>
 
 </html>
