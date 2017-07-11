@@ -63,7 +63,7 @@ desired effect
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="frontpage.html" class="logo">
+            <a href="starter.php" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>精德</b></span>
                 <!-- logo for regular state and mobile devices -->
@@ -116,71 +116,6 @@ desired effect
                         </li>
                         <!-- /.messages-menu -->
 
-                        <!-- Notifications Menu 
-                        <li class="dropdown notifications-menu">
-                            <!-- Menu toggle button 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
-                            <li>
-                                <!-- Inner Menu: contains the notifications 
-                                <ul class="menu">
-                                    <li>
-                                        <!-- start notification 
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                <!--    end notification 
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                        </li>
-                        -->
-
-                        <!-- Tasks Menu 
-                        <li class="dropdown tasks-menu">
-                            <!-- Menu Toggle Button 
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-flag-o"></i>
-                                <span class="label label-danger">9</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have 9 tasks</li>
-                                <li>
-                                    <!-- Inner menu: contains the tasks 
-                                    <ul class="menu">
-                                        <li>
-                                            <!-- Task item 
-                                            <a href="#">
-                                                <!-- Task title and progress text 
-                                                <h3>
-                                                    Design some buttons
-                                                    <small class="pull-right">20%</small>
-                                                </h3>
-                                                <!-- The progress bar 
-                                                <div class="progress xs">
-                                                    <!-- Change the css width attribute to simulate progress 
-                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                        <span class="sr-only">20% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!--  end task item 
-                                    </ul>
-                                </li>
-                                <li class="footer">
-                                    <a href="#">View all tasks</a>
-                                </li>
-                            </ul>
-                        </li>
-                        -->
-
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
@@ -200,40 +135,15 @@ desired effect
                                         <small>從2017年7月開始擔任</small>
                                     </p>
                                 </li>
-                                <!-- Menu Body 
-                                <li class="user-body">
-                                    <div class="row">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Followers</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
-                                        </div>
-                                    </div>
-                                     /.row -->
                         </li>
                         <!-- Menu Footer -->
                         <li class="user-footer">
-                            <!--
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            -->
                             <div class="pull-right">
                                 <a href="#" class="btn btn-default btn-flat">登出</a>
                             </div>
                         </li>
                         </ul>
                         </li>
-
-                        <!-- Control Sidebar Toggle Button 
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
-                        -->
                     </ul>
                 </div>
             </nav>
@@ -277,68 +187,17 @@ desired effect
                         <a href="FrontPage.php"><i class="fa fa-link"></i> <span>首頁</span>
                     </a>
                     </li>
-
-                    <!-- Dashboard 
-                    <li class="active treeview menu-open">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                            <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                        </ul>
-                    </li>
-                    /.Dashboard -->
-                    <!-- Optionally, you can add icons to the links -->
                     <li>
                         <a href="ProductInformation.php">
                         <i class="fa fa-link"></i>
                          <span>產品資訊</span>
                         </a>
-                    </li>
-                          <!--
-                          <span class="sidebar-menu">
-                            <i class="fa fa-angle-left pull-right"></i>
-                          </span>
-                           -->
-                        <!--
-                        <ul class="treeview-menu">
-                            <li><a href="#">產品1</a></li>
-                            <li><a href="#">產品2</a></li>
-                        </ul>
-                        -->
-                    
+                    </li>                   
                     <li><a href="MessageBoard.php"><i class="fa fa-link"></i> <span>留言板</span></a></li>
-                    <!--
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <ul class="treeview-menu">
-                            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-                        </ul>
-                    </ul>
-                    -->
-                    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>公司簡介</span></a></li> -->
                     <li>
                         <a href="CompanyIntroduce.php">
                             <i class="fa fa-edit"></i> <span>公司簡介</span>
-                            <!--
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right">
-                              
-                                  <?php 
-
-                                    ?>
-                            </i>
-                            </span>
-                            -->
                         </a>
-                        <!--
-                        <ul class="treeview-menu">
-                            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> 編輯公司簡介</a></li>
-                        </ul>
-                        -->
                     </li>
                     <li><a href="ConnectWays.php"><i class="fa fa-link"></i> <span>聯絡方式</span></a></li>
 
@@ -353,12 +212,6 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <!--
-                <h1>
-                    從資料庫抓公司簡介的資料顯示於頁面
-                    <small></small>
-                </h1>
-                -->
                     <a href="CompanyIntroduce_edit.php">
                         <button type="link" pull-right class="btn btn-primary">
                         編輯
@@ -378,6 +231,12 @@ desired effect
                 | Your Page Content Here |
                 -------------------------->
 
+                <!--
+                <h1>
+                    從資料庫抓公司簡介的資料顯示於網頁上
+                    <small></small>
+                </h1>
+                -->
             </section>
             <!-- /.content -->
         </div>
