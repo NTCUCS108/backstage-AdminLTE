@@ -1,3 +1,17 @@
+<?php
+mysql_connect("localhost","root","131313677"); //連結伺服器
+mysql_select_db("company"); //選擇資料庫
+mysql_query("set names utf8"); //以utf-8讀取資料，讓資料可以讀取中文
+$data=mysql_query("select * from connectways"); //從contact資料庫中選擇所有的資料表
+$rs=mysql_fetch_row($data);
+if($_POST['editor1']!='')
+{
+    mysql_query("update connectways set connectways = '$_POST[editor1]'");
+    header("location:ConnectWays.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -220,7 +234,7 @@ desired effect
                     <small>從資料庫抓聯絡方式的資料</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
+                    <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">聯絡方式</li>
                     <li class="active">編輯聯絡方式</li>
                 </ol>
@@ -233,16 +247,17 @@ desired effect
                     <div class="col-md-12">
                         <div class="box box-info">
                             <div class="box-header">
-                                <h3 class="box-title">CK 編輯器
-                                    <small>Advanced and full of features</small>
+                                <h3><class="box-little">HTML語法文字編輯器
+                                    <small>HTML editor </small>                   
                                 </h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body pad">
-                                <form>
+                                <form method="post">
                                     <textarea id="editor1" name="editor1" rows="10" cols="80">
-                                           這是我試著輸入的地方
-                                           也是我把資料庫的資料抓出來放的地方
+                                    <?php
+                                    echo "$rs[0]";
+                                    ?>
                                     
                                     <script type="text/javascript">
                                         var content = Document.getElementById('editor1').value;

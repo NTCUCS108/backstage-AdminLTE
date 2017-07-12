@@ -220,7 +220,7 @@ desired effect
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
+                    <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">公司簡介</li>
                 </ol>
 
@@ -247,6 +247,7 @@ desired effect
                 <?php
                 }
                 ?>
+                <br><br>
                 <a href="CompanyIntroduce_edit.php">
                     <button type="link" pull-right class="btn btn-primary">
                     編輯

@@ -1,3 +1,10 @@
+<?php
+mysql_connect("localhost","root","131313677"); //連結伺服器
+mysql_select_db("company"); //選擇資料庫
+mysql_query("set names utf8"); //以utf-8讀取資料，讓資料可以讀取中文
+$data=mysql_query("select * from backstagehome"); //從contact資料庫中選擇所有的資料表
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -65,9 +72,13 @@ desired effect
             <!-- Logo -->
             <a href="starter.php" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>精德</b></span>
+                <span class="logo-mini">
+                <b>精德</b>
+                </span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>精德</b>實業</span>
+                <span class="logo-lg">
+                <b>精德</b>實業
+                </span>
             </a>
 
             <!-- Header Navbar -->
@@ -216,14 +227,34 @@ desired effect
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    親愛的管理者您好，歡迎來到精德實業網站後台管理主頁<br><br><br>
+                ※親愛的管理者您好，歡迎來到精德實業網站後台管理主頁※
+                </h1>
+                <br>
+                
+                <img width="500" border="200" src="img/ginder.jpg"></img>
+                
+                    <br>
+                    <br>
+                    <h3>
+                    <?php
+                    for($i=1;$i<=mysql_num_rows($data);$i++)
+                    {
+                        $rs = mysql_fetch_row($data);
+                    ?>
+                    <?php echo $rs[0] ?>
+                    <?php
+                    }
+                    ?>
+                    </h3>
+
+                    <br><br>
                     <a href="starter_edit.php">
                         <button type="link" pull-right class="btn btn-primary">
                         編輯
                         </button>
                     </a>
                     <small></small>
-                </h1>
+
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">後台主頁</li>

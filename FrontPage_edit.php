@@ -215,9 +215,9 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>編輯首頁</h1>
+                <p><h1>編輯首頁</h1><h5>施工中...</h5></p>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
+                    <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">首頁</li>
                     <li class="active">編輯首頁</li>
                 </ol>
@@ -230,8 +230,8 @@ desired effect
                     <div class="col-md-12">
                         <div class="box box-info">
                             <div class="box-header">
-                                <h3 class="box-title">CK 編輯器
-                                    <small>Advanced and full of features</small>
+                                <h3 class="box-title">HTML語法文字編輯器
+                                    <small>HTML editor</small>
                                 </h3>
                             </div>
                             <!-- /.box-header -->
