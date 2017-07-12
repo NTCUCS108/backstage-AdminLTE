@@ -1,47 +1,16 @@
 <?php
 include("message_connect.php");
-//checkbox批次刪除
-if(isset($_POST['delete']))
+if(!isset($_GET["id"]))
+	header("location:MessageBoard.php");
+$id = $_GET["id"];
+$guestReply = $_POST["reply"];
+$data = mysql_query("select * from comment where guestID = '$id'");
+if(isset($guestReply))
 {
-$delete = $_POST['delete'];
-foreach($delete as $value)
-	mysql_query("delete from comment where guestID = '$value'");
+	$time = date("Y/m/d G:i:s");
+	mysql_query("update comment set guestReply='$guestReply',guestReplyTime='$time' where guestID='$id'");
+	header("location:MessageBoard.php");
 }
-//對資料庫的資料進行分頁
-if(!isset($_GET["guestContentType"]))
-	$search="不限";
-else
-	 $search = $_GET["guestContentType"];
-if(!isset($_GET["sortorder"]))
-	$sortorder="guestTime";
-else
-	$sortorder=$_GET["sortorder"];
-if(!isset($_GET["sortway"]))
-	$sortway="desc";
-else
-	$sortway=$_GET["sortway"];
-$num = 10;//一頁筆數
-if($search=="不限")//符合的資料共有幾筆
-	$data = mysql_query("select * from comment");
-else if($search=="已回覆")
-	$data = mysql_query("select * from comment where guestReply != ''");
-else if($search=="未回覆")
-	$data = mysql_query("select * from comment where guestReply = ''");
-else
-	$data = mysql_query("select * from comment where guestContentType = '$search'");
-$page = $_GET["page"];//目前在第幾頁
-if(!isset($page))
-	$page = 1;//未設定則內建1
-$start = ($page-1)*$num;//跟著頁數變化資料從第幾筆開始顯示
-$page_num = ceil(mysql_num_rows($data)/$num);//一共幾頁
-if($search=="不限")
-	$data = mysql_query("select * from comment order by $sortorder $sortway limit $start,$num");//抓取正確範圍的資料
-else if($search=="已回覆")
-	$data = mysql_query("select * from comment where guestReply != '' order by $sortorder $sortway limit $start,$num");
-else if($search=="未回覆")
-	$data = mysql_query("select * from comment where guestReply = '' order by $sortorder $sortway limit $start,$num");
-else
-	$data = mysql_query("select * from comment where guestContentType = '$search' order by $sortorder $sortway limit $start,$num");
 ?>
 
 <!DOCTYPE html>
@@ -267,74 +236,49 @@ desired effect
                     <small></small>
                 </h1>
                 -->
-				<form name="search" method="get">
-				搜尋類別：
-				<select name="guestContentType">
+				<h1 align="center">回覆頁面</h1>
 				<?php
-					echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>';
-					echo '<option value="產品"';if($search=="產品") echo ' selected';echo '>產品</option>';
-					echo '<option value="實績"';if($search=="實績") echo ' selected';echo '>實績</option>';
-					echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>';
-					echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>';
-					echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>';
-				?>
-				</select><br>
-				排序類別：
-				<select name="sortorder">
-				<?php
-					echo '<option value="guestTime"';if($sortorder=="guestTime") echo ' selected';echo '>時間</option>';
-					echo '<option value="browse_count"';if($sortorder=="browse_count") echo ' selected';echo '>瀏覽人數</option>';
-				?>
-				</select><br>
-				排序順序：
-				<select name="sortway">
-				<?php
-					echo '<option value="desc"';if($sortway=="desc") echo ' selected';echo '>新or多</option>';
-					echo '<option value=""';if($sortway=="") echo ' selected';echo '>舊or少</option>';
-				?>
-				</select><br>
-				<input type="submit" value="送出">
-				</form>
-				<form name="delete comment" method="post">
-				<input type="submit" value="刪除勾選的留言">
-
-				<?php
-				for($i=1;$i<=mysql_num_rows($data);$i++){
-					$rs = mysql_fetch_assoc($data);
+				$rs = mysql_fetch_assoc($data);
 				?>
 				<table align="center" width="60%" border="1">
 					<tr>
-						<td width="5%">
-							<input type="checkbox" name="delete[]" value="<?php echo $rs[guestID];?>">
-						</td>
-						<td width="10%"><?php echo "ID：$rs[guestID]"?></td>
-						<td width="15%"><?php echo "類型：$rs[guestContentType]"?></td>
-						<td width="60%"><?php echo "主旨：<a href='MessageBoard_detail.php?id=$rs[guestID]'>$rs[guestSubject]</a>"?></td>
-						<td width="5%"><?php echo $rs[browse_count]?></td>
-						<?php 
-							if($rs[guestReply]!="")
-								echo "<td width='5%' style='color:green;'>y</td>";
-							else
-								echo "<td width='5%' style='color:red;'>n</td>";
-						?>
-						
+						<td width="20%"><?php echo $rs[guestSubject];?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "暱稱：";?></td>
+						<td width="80%"><?php echo $rs[guestName];?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "信箱：";?></td>
+						<td width="80%"><?php echo $rs[guestEmail];?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "性別：";?></td>
+						<td width="80%"><?php if($rs[guestGender]==0)echo "女";else echo "男";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "內容：";?></td>
+						<td width="80%"><?php echo $rs[guestContent];?></td><!--無法換行-->
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "時間：";?></td>
+						<td width="80%"><?php echo $rs[guestTime];?></td>
 					</tr>
 				</table>
-				<?php
-				}
-				?>
+				<br>
+				<form id="reply_form" name="reply_form" method="post" align="center">
+				回覆內容：
+				<br><textarea name="reply" id="reply" style="width:60%;" rows="8">
+				</textarea><br>
+				<input type="submit" value="送出">
 				</form>
-				<p align="center">
-				<?php
-				for($i=1;$i<=$page_num;$i++)
-					echo "<a href='MessageBoard.php?guestContentType=$search&sortorder=$sortorder&sortway=$sortway&page=$i'>$i </a>"//顯示頁數
-				?>
-				</p>
                     <!--<button type="link" pull-right class="btn btn-primary">編輯</button>-->
 
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">留言板</li>
+					<li class="active">第<?php echo "$rs[guestID]"?>則留言</li>
+					<li class="active">回覆</li>
                 </ol>
 
             </section>
