@@ -25,7 +25,28 @@ if($_POST['icon']!='')
 if($_POST['link_src']!='')
 	$link_src=$_POST['link_src'];
 ?>
-
+<?php
+if($_GET['use_origin_pic']=="true")
+	$_SESSION['img_src'] = $rs['img_src'];
+if(isset($headers) and isset($description) and isset($icon) and isset($link_src) and isset($_SESSION['img_src']))
+{
+	if($_GET['use_origin_pic']!="true")
+		$_SESSION['img_src'] = substr($_SESSION['img_src'],3);//upload/test.php問題 因此需要去掉../
+	if(isset($rs) and $_GET['use_origin_pic']!="true")
+		unlink("$rs[img_src]");
+	if(isset($_GET['id']))
+	{
+		mysql_query("update slide set headers = '$headers',description = '$description',icon = '$icon',link_src = '$link_src',img_src = '$_SESSION[img_src]' where slide_id = '$id'");
+	}
+	else
+		mysql_query("Insert into slide value('$id','$_SESSION[img_src]','$alt','$headers','$description','$icon','$link_src')");
+	unset($_SESSION["img_src"]);
+	header("location:Carousel_edit.php");
+	exit();
+}	
+else
+	echo "尚未輸入完成";
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -273,28 +294,7 @@ desired effect
 					link:<input type='text' name='link_src' value="<?php if(isset($rs))echo "$rs[link_src]";else echo '#';?>"><br>
 					<input type='submit' value='提交'><br>
 				</form>
-				<?php
-				if($_GET['use_origin_pic']=="true")
-					$_SESSION['img_src'] = $rs['img_src'];
-				if(isset($headers) and isset($description) and isset($icon) and isset($link_src) and isset($_SESSION['img_src']))
-				{
-					if($_GET['use_origin_pic']!="true")
-						$_SESSION['img_src'] = substr($_SESSION['img_src'],3);//upload/test.php問題 因此需要去掉../
-					if(isset($rs) and $_GET['use_origin_pic']!="true")
-						unlink("$rs[img_src]");
-					if(isset($_GET['id']))
-					{
-						mysql_query("update slide set headers = '$headers',description = '$description',icon = '$icon',link_src = '$link_src',img_src = '$_SESSION[img_src]' where slide_id = '$id'");
-					}
-					else
-						mysql_query("Insert into slide value('$id','$_SESSION[img_src]','$alt','$headers','$description','$icon','$link_src')");
-					unset($_SESSION["img_src"]);
-					header("location:Carousel_edit.php");
-					exit();
-				}	
-				else
-					echo "尚未輸入完成";
-				?>
+				
             </section>
             <!-- /.content -->
         </div>
