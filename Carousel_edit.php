@@ -1,3 +1,26 @@
+<?php
+include("carousel_connect.php");
+//checkbox批次刪除
+if(isset($_POST['delete']))
+{
+$delete = $_POST['delete'];
+foreach($delete as $value)
+{
+	$data=mysql_query("select * from slide where slide_id = '$value'");
+	$rs=mysql_fetch_assoc($data);
+	unlink("$rs[img_src]");//delete file
+	mysql_query("delete from slide where slide_id = '$value'");
+}
+}
+$data=mysql_query("select * from slide order by slide_id");
+for($i=0;$i<mysql_num_rows($data);$i++)
+{
+	$rs = mysql_fetch_assoc($data);
+	mysql_query("update slide set slide_id = '$i',alt = '$i' where slide_id='$rs[slide_id]'");
+}
+$data=mysql_query("select * from slide order by slide_id");
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -218,6 +241,7 @@ desired effect
                 <ol class="breadcrumb">
                     <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">首頁</li>
+					<li class="active">投影片編輯</li>
                 </ol>
             </section>
 
@@ -234,12 +258,25 @@ desired effect
                 </h1>
                 -->
                 <br><br>
-                <a href="Carousel_edit.php">
-                    <button type="link" pull-right class="btn btn-primary">投影片編輯</button>
-                </a>
-                <a href="FrontPage_edit.php">
-                    <button type="link" pull-right class="btn btn-primary">編輯</button>
-                </a>
+				<h1 align='center'>管理首頁板</h1><br>
+				<button onclick="location.href='./Carousel_post.php'">新增</button>
+				<form name='delete_homepage' method='post'>
+				<input type='submit' value='刪除勾選投影片'>
+				<?php
+				for($i=1;$i<=mysql_num_rows($data);$i++){
+					$rs = mysql_fetch_assoc($data);
+				?>
+				<table align="center" width="60%" border="1">
+					<tr>
+						<td width="5%"><input type='checkbox' name='delete[]' value='<?php echo "$rs[slide_id]";?>'></td>
+						<td width="10%">slide id:<?php echo "$rs[slide_id]";?></td>
+						<td width="85%">header:<?php echo "<a href='Carousel_detail.php?id=$rs[slide_id]'>$rs[headers]</a>";?></td>
+					</tr>
+				</table>
+				<?php
+				}
+				?>
+				</form>
             </section>
             <!-- /.content -->
         </div>

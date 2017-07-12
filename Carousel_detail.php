@@ -1,3 +1,12 @@
+<?php
+include("carousel_connect.php");
+$id = $_GET["id"];
+if(!isset($id))
+	header("location:Carousle_edit.php");
+$data=mysql_query("select * from slide where slide_id = '$id'");
+$rs=mysql_fetch_assoc($data);
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -218,6 +227,8 @@ desired effect
                 <ol class="breadcrumb">
                     <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">首頁</li>
+					<li class="active">投影片編輯</li>
+					<li class="active">第<?php echo "$rs[slide_id]"?>則投影</li>
                 </ol>
             </section>
 
@@ -234,12 +245,44 @@ desired effect
                 </h1>
                 -->
                 <br><br>
-                <a href="Carousel_edit.php">
-                    <button type="link" pull-right class="btn btn-primary">投影片編輯</button>
-                </a>
-                <a href="FrontPage_edit.php">
-                    <button type="link" pull-right class="btn btn-primary">編輯</button>
-                </a>
+				<h1 align="center">第<?php echo $id;?>則投影</h1><br>
+				<button onclick="location.href = 'Carousel_edit.php';">回管理首頁板</button><br>
+				<table align="center" width="60%" border="1">
+					<tr>
+						<td width="20%"><?php echo "投影片id：$rs[slide_id]";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "圖片位置：";?></td>
+						<td width="80%"><?php echo "$rs[img_src]";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "圖片內容：";?></td>
+						<td width="80%"><?php echo "<img src='$rs[img_src]' style='max-width:500px;max-height:300px;'>";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "投影片alt:$rs[alt]";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "標題：";?></td>
+						<td width="80%"><?php echo "$rs[headers]";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "介紹：";?></td>
+						<td width="80%"><?php echo "$rs[description]";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "按鈕顯示：";?></td>
+						<td width="80%"><?php echo "$rs[icon]";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "網址連結：";?></td>
+						<td width="80%"><?php echo "$rs[link_src]";?></td>
+					</tr>
+				</table>
+				<p align="center">
+					<a href="Carousel_post.php?id=<?php echo "$rs[slide_id]"?>">編輯</a>
+					<a href="Carousel_delete.php?id=<?php echo "$rs[slide_id]"?>">刪除</a>
+				</p>
             </section>
             <!-- /.content -->
         </div>
