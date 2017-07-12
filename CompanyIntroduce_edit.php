@@ -235,7 +235,7 @@ desired effect
                     <small>從資料庫抓公司簡介的資料</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
+                    <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">公司簡介</li>
                     <li class="active">編輯公司簡介</li>
                 </ol>
@@ -248,8 +248,8 @@ desired effect
                     <div class="col-md-12">
                         <div class="box box-info">
                             <div class="box-header">
-                                <h3 class="box-title">CK 編輯器
-                                    <small>Advanced and full of features</small>
+                                <h3><class="box-little">HTML語法文字編輯器
+                                    <small>HTML editor </small>                   
                                 </h3>
                             </div>
                             <!-- /.box-header -->
@@ -259,6 +259,7 @@ desired effect
                                     <?php
                                     echo "$rs[0]";
                                     ?>
+
                                     <script type="text/javascript">
                                         var content = Document.getElementById('editor1').value;
                                     </script>
