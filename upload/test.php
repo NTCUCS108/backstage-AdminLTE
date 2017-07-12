@@ -23,17 +23,17 @@ else
 	echo "檔案大小:$sizemb"."MB<br>";
 	echo "檔案名稱:$name<br>";
 	echo "暫存名稱:$tmp_name<br>";
-	if($type=="image/jpeg")//副檔名審核
+	if($type=="image/jpeg" or $type=="image/png")//副檔名審核
 	{
 		if($sizemb < MAX_UPLOAD)//限制流量為10MB
 		{
 			$filename = explode(".",$name);//將檔名($filename[0])與副檔名($filename[0])分開
 			$name = $filename[0]."-".date(YmdGis)."-".rand(0,10);//新檔名(加上時戳.亂數)
 			echo "已修改為新檔名".$name."並上傳<br>";
-			$savename=iconv("UTF-8","BIG-5",$name);//將網頁用中文(UTF-8)轉為電腦用中文(BIG-5)以利存檔
-			move_uploaded_file($tmp_name,"../../bootstrap-3.3.1/docs/examples/carousel/img/".$savename.".".$filename[1]);//搬移至想要的資料夾
+			//$savename=iconv("UTF-8","BIG-5",$name);//將網頁用中文(UTF-8)轉為電腦用中文(BIG-5)以利存檔//因為雲端，所以存取方式依然是utf8
+			move_uploaded_file($tmp_name,"../../bootstrap-3.3.1/docs/examples/carousel/img/".$name.".".$filename[1]);//搬移至想要的資料夾
 			echo "上傳成功";
-			$_SESSION['img_src'] = "../../bootstrap-3.3.1/docs/examples/carousel/img/$savename.$filename[1]";
+			$_SESSION['img_src'] = "../../bootstrap-3.3.1/docs/examples/carousel/img/$name.$filename[1]";
 		}
 		else
 			echo "檔案必須小於10MB";

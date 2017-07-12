@@ -44,8 +44,6 @@ if(isset($headers) and isset($description) and isset($icon) and isset($link_src)
 	header("location:Carousel_edit.php");
 	exit();
 }	
-else
-	echo "尚未輸入完成";
 ?>
 <!DOCTYPE html>
 <!--
