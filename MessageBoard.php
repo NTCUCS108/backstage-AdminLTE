@@ -261,7 +261,6 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-<<<<<<< HEAD
                 <!--
                 <h1>
                     從資料庫抓留言板的資料顯示於網頁上
@@ -332,9 +331,7 @@ desired effect
 				?>
 				</p>
                     <!--<button type="link" pull-right class="btn btn-primary">編輯</button>-->
-
-=======
->>>>>>> e58b2ddd304a858a3f31084680ad7a8d51e7edc1
+					
                 <ol class="breadcrumb">
                     <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">留言板</li>
