@@ -23,7 +23,7 @@ else
 	echo "檔案大小:$sizemb"."MB<br>";
 	echo "檔案名稱:$name<br>";
 	echo "暫存名稱:$tmp_name<br>";
-	if($type=="image/jpeg" or $type=="image/png")//副檔名審核
+	if($type=="image/jpeg" or $type=="image/png" or $type=="image/gif")//副檔名審核
 	{
 		if($sizemb < MAX_UPLOAD)//限制流量為10MB
 		{
