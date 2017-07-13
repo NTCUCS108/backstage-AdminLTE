@@ -4,6 +4,7 @@ if(!isset($_GET['id']))
 	header("location:MessageBoard.php");
 $id = $_GET["id"];
 $data = mysql_query("select * from comment where guestID = '$id'");
+mysql_query("update comment set admin_read = '1' where guestID = '$id'");
 $rs = mysql_fetch_assoc($data);
 ?>
 

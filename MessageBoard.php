@@ -297,7 +297,19 @@ desired effect
 				</form>
 				<form name="delete comment" method="post">
 				<input type="submit" value="刪除勾選的留言">
-
+<table align="center" width="60%" border="1">
+					<tr>
+						<td width="5%">
+							刪除
+						</td>
+						<td width="5%">ID</td>
+						<td width="5%">類型</td>
+						<td width="60%">主旨：</td>
+						<td width="10%">瀏覽人數</td>
+						<td width="10%">已回覆</td>
+						<td width="5%">已讀</td>
+					</tr>
+				</table>
 				<?php
 				for($i=1;$i<=mysql_num_rows($data);$i++){
 					$rs = mysql_fetch_assoc($data);
@@ -307,17 +319,22 @@ desired effect
 						<td width="5%">
 							<input type="checkbox" name="delete[]" value="<?php echo $rs[guestID];?>">
 						</td>
-						<td width="10%"><?php echo "ID：$rs[guestID]"?></td>
-						<td width="15%"><?php echo "類型：$rs[guestContentType]"?></td>
-						<td width="60%"><?php echo "主旨：<a href='MessageBoard_detail.php?id=$rs[guestID]'>$rs[guestSubject]</a>"?></td>
-						<td width="5%"><?php echo $rs[browse_count]?></td>
+						<td width="5%"><?php echo "$rs[guestID]"?></td>
+						<td width="5%"><?php echo "$rs[guestContentType]"?></td>
+						<td width="60%"><?php echo "<a href='MessageBoard_detail.php?id=$rs[guestID]'>$rs[guestSubject]</a>"?></td>
+						<td width="10%"><?php echo $rs[browse_count]?></td>
 						<?php 
 							if($rs[guestReply]!="")
-								echo "<td width='5%' style='color:green;'>y</td>";
+								echo "<td width='10%' style='color:green;'>y</td>";
 							else
-								echo "<td width='5%' style='color:red;'>n</td>";
+								echo "<td width='10%' style='color:red;'>n</td>";
 						?>
-						
+						<?php 
+							if($rs[admin_read]=="1")
+								echo "<td width='10%' style='color:green;'>y</td>";
+							else
+								echo "<td width='10%' style='color:red;'>n</td>";
+						?>
 					</tr>
 				</table>
 				<?php
