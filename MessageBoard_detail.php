@@ -1,47 +1,10 @@
 <?php
 include("message_connect.php");
-//checkbox批次刪除
-if(isset($_POST['delete']))
-{
-$delete = $_POST['delete'];
-foreach($delete as $value)
-	mysql_query("delete from comment where guestID = '$value'");
-}
-//對資料庫的資料進行分頁
-if(!isset($_GET["guestContentType"]))
-	$search="不限";
-else
-	 $search = $_GET["guestContentType"];
-if(!isset($_GET["sortorder"]))
-	$sortorder="guestTime";
-else
-	$sortorder=$_GET["sortorder"];
-if(!isset($_GET["sortway"]))
-	$sortway="desc";
-else
-	$sortway=$_GET["sortway"];
-$num = 10;//一頁筆數
-if($search=="不限")//符合的資料共有幾筆
-	$data = mysql_query("select * from comment");
-else if($search=="已回覆")
-	$data = mysql_query("select * from comment where guestReply != ''");
-else if($search=="未回覆")
-	$data = mysql_query("select * from comment where guestReply = ''");
-else
-	$data = mysql_query("select * from comment where guestContentType = '$search'");
-$page = $_GET["page"];//目前在第幾頁
-if(!isset($page))
-	$page = 1;//未設定則內建1
-$start = ($page-1)*$num;//跟著頁數變化資料從第幾筆開始顯示
-$page_num = ceil(mysql_num_rows($data)/$num);//一共幾頁
-if($search=="不限")
-	$data = mysql_query("select * from comment order by $sortorder $sortway limit $start,$num");//抓取正確範圍的資料
-else if($search=="已回覆")
-	$data = mysql_query("select * from comment where guestReply != '' order by $sortorder $sortway limit $start,$num");
-else if($search=="未回覆")
-	$data = mysql_query("select * from comment where guestReply = '' order by $sortorder $sortway limit $start,$num");
-else
-	$data = mysql_query("select * from comment where guestContentType = '$search' order by $sortorder $sortway limit $start,$num");
+if(!isset($_GET['id']))
+	header("location:MessageBoard.php");
+$id = $_GET["id"];
+$data = mysql_query("select * from comment where guestID = '$id'");
+$rs = mysql_fetch_assoc($data);
 ?>
 
 <!DOCTYPE html>
@@ -267,75 +230,68 @@ desired effect
                     <small></small>
                 </h1>
                 -->
-				<form name="search" method="get">
-				搜尋類別：
-				<select name="guestContentType">
-				<?php
-					echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>';
-					echo '<option value="產品"';if($search=="產品") echo ' selected';echo '>產品</option>';
-					echo '<option value="實績"';if($search=="實績") echo ' selected';echo '>實績</option>';
-					echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>';
-					echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>';
-					echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>';
-				?>
-				</select><br>
-				排序類別：
-				<select name="sortorder">
-				<?php
-					echo '<option value="guestTime"';if($sortorder=="guestTime") echo ' selected';echo '>時間</option>';
-					echo '<option value="browse_count"';if($sortorder=="browse_count") echo ' selected';echo '>瀏覽人數</option>';
-				?>
-				</select><br>
-				排序順序：
-				<select name="sortway">
-				<?php
-					echo '<option value="desc"';if($sortway=="desc") echo ' selected';echo '>新or多</option>';
-					echo '<option value=""';if($sortway=="") echo ' selected';echo '>舊or少</option>';
-				?>
-				</select><br>
-				<input type="submit" value="送出">
-				</form>
-				<form name="delete comment" method="post">
-				<input type="submit" value="刪除勾選的留言">
-
-				<?php
-				for($i=1;$i<=mysql_num_rows($data);$i++){
-					$rs = mysql_fetch_assoc($data);
-				?>
+				<h1 align="center">第<?php echo $id;?>則留言</h1><br>
+				<button onclick="location.href = 'MessageBoard.php';">回管理留言板</button>
+				<br>
 				<table align="center" width="60%" border="1">
 					<tr>
-						<td width="5%">
-							<input type="checkbox" name="delete[]" value="<?php echo $rs[guestID];?>">
-						</td>
-						<td width="10%"><?php echo "ID：$rs[guestID]"?></td>
-						<td width="15%"><?php echo "類型：$rs[guestContentType]"?></td>
-						<td width="60%"><?php echo "主旨：<a href='MessageBoard_detail.php?id=$rs[guestID]'>$rs[guestSubject]</a>"?></td>
-						<td width="5%"><?php echo $rs[browse_count]?></td>
-						<?php 
-							if($rs[guestReply]!="")
-								echo "<td width='5%' style='color:green;'>y</td>";
-							else
-								echo "<td width='5%' style='color:red;'>n</td>";
-						?>
-						
+						<td width="20%"><?php echo "主旨："?></td>
+						<td width="80%"><?php echo $rs[guestSubject]?></td>
 					</tr>
+					<tr>
+						<td width="20%"><?php echo "類型："?></td>
+						<td width="80%"><?php echo $rs[guestContentType]?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "瀏覽次數："?></td>
+						<td width="80%"><?php echo $rs[browse_count]?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "ID："?></td>
+						<td width="80%"><?php echo $rs[guestID]?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "暱稱："?></td>
+						<td width="80%"><?php echo $rs[guestName]?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "信箱："?></td>
+						<td width="80%"><?php echo $rs[guestEmail]?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "性別："?></td>
+						<td width="80%"><?php if($rs[guestGender]==0)echo "女";else echo "男";?></td>
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "內容："?></td>
+						<td width="80%"><?php echo $rs[guestContent]?></td><!--無法換行-->
+					</tr>
+					<tr>
+						<td width="20%"><?php echo "時間："?></td>
+						<td width="80%"><?php echo $rs[guestTime]?></td>
+					</tr>
+					<?php if($rs[guestReply]!=""){?>
+							<tr>
+							  <td colspan="2" style="background:#999; color:white; text-align:center">站長回覆</td>
+							</tr>
+							<tr>
+							  <td colspan="2"><?php echo $rs[guestReply];?></td>
+							</tr>
+					<?php } ?>
 				</table>
-				<?php
-				}
-				?>
-				</form>
+				<br>
 				<p align="center">
-				<?php
-				for($i=1;$i<=$page_num;$i++)
-					echo "<a href='MessageBoard.php?guestContentType=$search&sortorder=$sortorder&sortway=$sortway&page=$i'>$i </a>"//顯示頁數
-				?>
+					<a href="Message_reply.php?id=<?php echo $rs[guestID];?>">回覆</a>
+					<a href="Message_delete.php?id=<?php echo $rs[guestID];?>">刪除</a>
 				</p>
                     <!--<button type="link" pull-right class="btn btn-primary">編輯</button>-->
-					
+
                 <ol class="breadcrumb">
-                    <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
+                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">留言板</li>
+					<li class="active">第<?php echo "$rs[guestID]"?>則留言</li>
                 </ol>
+
             </section>
 
             <!-- Main content -->
@@ -344,16 +300,7 @@ desired effect
                 <!--------------------------
                 | Your Page Content Here |
                 -------------------------->
-            <!--
-            <h1>
-                從資料庫抓留言板的資料顯示於網頁上
-                <small></small>
-            </h1>
-            -->
-                <br><br>
-                <a href="#">
-                    <button type="link" pull-right class="btn btn-primary">編輯</button>
-                </a>
+
             </section>
             <!-- /.content -->
         </div>
