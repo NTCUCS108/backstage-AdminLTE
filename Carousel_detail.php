@@ -280,7 +280,7 @@ desired effect
 					</tr>
 				</table>
 				<p align="center">
-					<a href="Carousel_post.php?id=<?php echo "$rs[slide_id]"?>">編輯</a>
+					<a href="Carousel_edit_mode_select.php?id=<?php echo "$rs[slide_id]"?>">編輯</a>
 					<a href="Carousel_delete.php?id=<?php echo "$rs[slide_id]"?>">刪除</a>
 				</p>
             </section>
