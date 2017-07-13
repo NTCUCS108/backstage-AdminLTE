@@ -1,5 +1,13 @@
 <?php
+session_start();
+if($_SESSION['login']!="yes")
+	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
 include("message_connect.php");
+$_SESSION['havenot_read_data'] = mysql_query("select * from comment where admin_read = '0'");
+$_SESSION['havenot_read_num'] = mysql_num_rows($_SESSION['havenot_read_data']);
+$_SESSION['havenot_reply_data'] = mysql_query("select * from comment where guestReply = ''");
+$_SESSION['havenot_reply_num'] = mysql_num_rows($_SESSION['havenot_reply_data']);
+
 if(!isset($_GET["id"]))
 	header("location:MessageBoard.php");
 $id = $_GET["id"];
@@ -99,10 +107,11 @@ desired effect
                             <!-- Menu toggle button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="label label-danger">3</span>
+                                <span class="label label-danger"><?php echo $_SESSION[havenot_read_num]+$_SESSION[havenot_reply_num];?></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">系統有3則新留言!</li>
+                                <li class="header"><a href="MessageBoard.php?guestContentType=未讀">系統有<?php echo "$_SESSION[havenot_read_num]";?>則未讀留言!</a></li>
+								<li class="header"><a href="MessageBoard.php?guestContentType=未回覆">系統有<?php echo "$_SESSION[havenot_reply_num]";?>則未回覆留言!</a></li>
                                 <li>
                                     <!-- inner menu: contains the messages -->
                                     <ul class="menu">
@@ -236,7 +245,25 @@ desired effect
                     <small></small>
                 </h1>
                 -->
-				<h1 align="center">回覆頁面</h1>
+				
+                    <!--<button type="link" pull-right class="btn btn-primary">編輯</button>-->
+
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
+                    <li class="active">留言板</li>
+					<li class="active">第<?php echo "$rs[guestID]"?>則留言</li>
+					<li class="active">回覆</li>
+                </ol>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content container-fluid">
+
+                <!--------------------------
+                | Your Page Content Here |
+                -------------------------->
+			<h1 align="center">回覆頁面</h1>
 				<?php
 				$rs = mysql_fetch_assoc($data);
 				?>
@@ -272,24 +299,6 @@ desired effect
 				</textarea><br>
 				<input type="submit" value="送出">
 				</form>
-                    <!--<button type="link" pull-right class="btn btn-primary">編輯</button>-->
-
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
-                    <li class="active">留言板</li>
-					<li class="active">第<?php echo "$rs[guestID]"?>則留言</li>
-					<li class="active">回覆</li>
-                </ol>
-
-            </section>
-
-            <!-- Main content -->
-            <section class="content container-fluid">
-
-                <!--------------------------
-                | Your Page Content Here |
-                -------------------------->
-
             </section>
             <!-- /.content -->
         </div>
