@@ -16,7 +16,7 @@ $data=mysql_query("select * from slide order by slide_id");
 for($i=0;$i<mysql_num_rows($data);$i++)
 {
 	$rs = mysql_fetch_assoc($data);
-	mysql_query("update slide set slide_id = '$i',alt = '$i' where slide_id='$rs[slide_id]'");
+	mysql_query("update slide set slide_id = '$i' where slide_id='$rs[slide_id]'");
 }
 $data=mysql_query("select * from slide order by slide_id");
 ?>

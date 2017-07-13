@@ -6,7 +6,6 @@ if(isset($_GET['id']) xor isset($_GET['use_original_pic']))
 if(isset($_GET['id']))
 {
 	$id=$_GET['id'];
-	$alt=$id;
 	$data=mysql_query("select * from slide where slide_id = '$id'");
 	$rs=mysql_fetch_assoc($data);
 }
@@ -14,7 +13,6 @@ else
 {
 	$data=mysql_query("select * from slide");
 	$id = mysql_num_rows($data);
-	$alt = $id;
 }
 if($_POST['img_src']!='')
 	$img_src=$_POST['img_src'];
@@ -41,7 +39,7 @@ if(isset($headers) and isset($description) and isset($icon) and isset($link_src)
 		mysql_query("update slide set headers = '$headers',description = '$description',icon = '$icon',link_src = '$link_src',img_src = '$_SESSION[img_src]' where slide_id = '$id'");
 	}
 	else
-		mysql_query("Insert into slide value('$id','$_SESSION[img_src]','$alt','$headers','$description','$icon','$link_src')");
+		mysql_query("Insert into slide value('$id','$_SESSION[img_src]','$headers','$description','$icon','$link_src')");
 	unset($_SESSION["img_src"]);
 	header("location:Carousel_edit.php");
 	exit();

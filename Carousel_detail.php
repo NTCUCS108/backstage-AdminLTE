@@ -260,9 +260,6 @@ desired effect
 						<td width="80%"><?php echo "<img src='$rs[img_src]' style='max-width:500px;max-height:300px;'>";?></td>
 					</tr>
 					<tr>
-						<td width="20%"><?php echo "投影片alt:$rs[alt]";?></td>
-					</tr>
-					<tr>
 						<td width="20%"><?php echo "標題：";?></td>
 						<td width="80%"><?php echo "$rs[headers]";?></td>
 					</tr>
