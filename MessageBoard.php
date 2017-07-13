@@ -27,6 +27,10 @@ else if($search=="已回覆")
 	$data = mysql_query("select * from comment where guestReply != ''");
 else if($search=="未回覆")
 	$data = mysql_query("select * from comment where guestReply = ''");
+else if($search=="未讀")
+	$data = mysql_query("select * from comment where admin_read = '0'");
+else if($search=="已讀")
+	$data = mysql_query("select * from comment where admin_read = '1'");
 else
 	$data = mysql_query("select * from comment where guestContentType = '$search'");
 $page = $_GET["page"];//目前在第幾頁
@@ -40,6 +44,10 @@ else if($search=="已回覆")
 	$data = mysql_query("select * from comment where guestReply != '' order by $sortorder $sortway limit $start,$num");
 else if($search=="未回覆")
 	$data = mysql_query("select * from comment where guestReply = '' order by $sortorder $sortway limit $start,$num");
+else if($search=="未讀")
+	$data = mysql_query("select * from comment where admin_read = '0' order by $sortorder $sortway limit $start,$num");
+else if($search=="已讀")
+	$data = mysql_query("select * from comment where admin_read = '1' order by $sortorder $sortway limit $start,$num");
 else
 	$data = mysql_query("select * from comment where guestContentType = '$search' order by $sortorder $sortway limit $start,$num");
 ?>
@@ -277,6 +285,8 @@ desired effect
 					echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>';
 					echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>';
 					echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>';
+					echo '<option value="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</option>';
+					echo '<option value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</option>';
 				?>
 				</select><br>
 				排序類別：
