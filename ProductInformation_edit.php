@@ -2,7 +2,14 @@
 mysql_connect("localhost","root","admin"); //連結伺服器
 mysql_select_db("company"); //選擇資料庫
 mysql_query("set names utf8"); //以utf-8讀取資料，讓資料可以讀取中文
-$data=mysql_query("select * from test limit 0,10"); //從contact資料庫中選擇所有的資料表
+$data=mysql_query("select * from test"); //從contact資料庫中選擇所有的資料表
+$rs=mysql_fetch_row($data);
+if($_POST['editor1']!='')
+{
+    mysql_query("update test set test = '$_POST[editor1]'");
+    header("location:ProductInformation.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -142,6 +149,7 @@ desired effect
                                         <small>從2017年7月開始擔任</small>
                                     </p>
                                 </li>
+                                
                         </li>
                         <!-- Menu Footer -->
                         <li class="user-footer">
@@ -189,20 +197,19 @@ desired effect
                 <!-- Sidebar Menu -->
                 
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header"></li>
+                    <li class="header">
                     <li>
                         <a href="FrontPage.php"><i class="fa fa-link"></i> <span>首頁</span>
-                    </a>
+                        </a>
+                    </li>
                     </li>
 
                     <!-- Optionally, you can add icons to the links -->
                     <li>
-                        <a href="ProductInformation.php">
-                        <i class="fa fa-edit"></i>
-                         <span>產品資訊</span>
+                        <a href="ProductInformation.php"><i class="fa fa-link"></i> <span>產品資訊</span>
                         </a>
                     </li>
-                    
+
                     <li><a href="MessageBoard.php"><i class="fa fa-link"></i> <span>留言板</span></a></li>
                     <li>
                         <a href="CompanyIntroduce.php">
@@ -222,41 +229,64 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <ol class="breadcrumb">
-                    <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
-                    <li class="active">產品資訊</li>
-                </ol>
-            </section>
-
-            <!-- Main content -->
-            <section class="content container-fluid">
-
-                <!--------------------------
-                | Your Page Content Here |
-                -------------------------->
-
                 <!--
                 <h1>
-                    從資料庫抓產品資訊的資料顯示於網頁上
-                    縮圖+標題+一些文字
+                    親愛的管理者您好，歡迎來到精德實業網站後台管理主頁<br><br><br>
+                    <a href="CompanyIntroduce_edit.php">
+                        <button type="link" pull-right class="btn btn-primary">
+                        編輯
+                        </button>
+                    </a>
                     <small></small>
                 </h1>
                 -->
-                <form>
-                        <?php
-                        for($i=1;$i<=mysql_num_rows($data);$i++)
-                        {
-                            $rs = mysql_fetch_row($data);
-                        ?>
-                        <?php echo $rs[0] ?><br>
-                        <?php
-                        }
-                        ?>
-                </form>
-                <br><br>
-                <a href='ProductInformation_edit.php'>
-                    <button type="link" pull-right class="btn btn-primary">編輯</button>
-                </a>
+                <h1>編輯後台主頁</h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
+                    <li class="active">後台主頁</li>
+                    <li class="active">編輯後台主頁</li>
+                </ol>
+
+            </section>
+
+            <!-- Main content -->
+        
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h3 class="box-title">HTML語法文字編輯器
+                                    <small>HTML editor</small>
+                                </h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body pad">
+                                <form method="post" accept-charset="utf-8">
+                                    <textarea id="editor1" name="editor1" rows="10" cols="80">
+
+                                    <?php
+                                    echo "$rs[0]";
+                                    ?>
+                                    
+                                    <script type="text/javascript">
+                                    var content = Document.getElementById('editor1').value;
+                                    </script>
+                                    </textarea>
+                                    <!-- ***Store Button*** -->
+                                    <div class="pull-right">
+                                        <button type="link" pull-right class="btn btn-flat">取消編輯</button>
+                                    </div>
+                                    <!-- ***Store Button*** -->
+                                    <div class="pull-left">
+                                        <button type="submit" pull-left class="btn btn-primary">儲存編輯</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <!-- /.col-->
+                </div>
+                <!-- ./row -->
             </section>
             <!-- /.content -->
         </div>
@@ -281,12 +311,27 @@ desired effect
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- FastClick -->
+        <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="../../dist/js/demo.js"></script>
+        <!-- ******CK Editor****** -->
+        <script src="bower_components/ckeditor/ckeditor.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <script>
+        $(function() {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('editor1')
+        })
+        </script>
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+        Both of these plugins are recommended to enhance the
+        user experience. -->
 </body>
 
 </html>
