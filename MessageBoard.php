@@ -293,7 +293,7 @@ desired effect
 
             <!-- Main content -->
             <section class="content container-fluid">
-                    <form name="search" method="get">
+                <form name="search" method="get">
 				搜尋類別：
                 <button name="guestContentType" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
 				--類別--<span class="fa fa-caret-down"></span>
@@ -328,11 +328,7 @@ desired effect
 				</select><br>
 				<input type="submit" value="送出">
 				    </form>
-                    </div>
-                <!-- /btn-group -->
-                <input type="text" class="form-control">
-              </div>
-              <!-- /input-group -->
+ 
 
 				<form name="delete comment" method="post">
 				<input type="submit" value="刪除勾選的留言">
@@ -421,9 +417,12 @@ desired effect
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
-
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
         Both of these plugins are recommended to enhance the
         user experience. -->
