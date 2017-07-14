@@ -204,9 +204,7 @@ desired effect
                 <!-- Sidebar Menu -->
                 
                 <ul class="sidebar-menu" data-widget="tree">
-                    <a href="../bootstrap-3.3.1/docs/examples/carousel/test_home.php">
                     <li class="header">
-                    查看前台網頁
                     </li>
                     </a>
                     <li>
