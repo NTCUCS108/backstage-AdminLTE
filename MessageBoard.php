@@ -299,14 +299,14 @@ desired effect
 				--類別--<span class="fa fa-caret-down"></span>
                 <ul class="dropdown-menu">
 				
-					<li><?php echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>'; ?></li>
-					<li><?php echo '<option value="產品"';if($search=="產品") echo ' selected';echo '>產品</option>'; ?></li>
-					<li><?php echo '<option value="實績"';if($search=="實績") echo ' selected';echo '>實績</option>'; ?></li>
-					<li><?php echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>'; ?></li>
-					<li><?php echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>'; ?></li>
-					<li><?php echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>'; ?></li>
-					<li><?php echo '<option value="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</option>'; ?></li>
-					<li><?php echo '<option value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</option>'; ?></li>
+					<?php echo '<li value="不限"';if($search=="不限") echo ' selected';echo '>不限</li>'; ?>
+					<?php echo '<li value="產品"';if($search=="產品") echo ' selected';echo '>產品</li>'; ?>
+					<?php echo '<li value="實績"';if($search=="實績") echo ' selected';echo '>實績</li>'; ?>
+					<?php echo '<li value="其他"';if($search=="其他") echo ' selected';echo '>其他</li>'; ?>
+					<?php echo '<li value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</li>'; ?>
+					<?php echo '<li value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</li>'; ?>
+					<?php echo '<li value="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</li>'; ?>
+					<?php echo '<li value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</li>'; ?>
 				
                 </ul>
 				</button>
