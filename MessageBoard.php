@@ -278,15 +278,6 @@ desired effect
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <!--
-                <h1>
-                    從資料庫抓留言板的資料顯示於網頁上
-                    <small></small>
-                </h1>
-                -->
-				
-                    <!--<button type="link" pull-right class="btn btn-primary">編輯</button>-->
-					
                 <ol class="breadcrumb">
                     <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active">留言板</li>
