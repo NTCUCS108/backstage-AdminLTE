@@ -293,20 +293,27 @@ desired effect
 
             <!-- Main content -->
             <section class="content container-fluid">
-			<form name="search" method="get">
+			<div class="input-group input-group-lg">
+                <div class="input-group-btn">
+                    <form name="search" method="get">
 				搜尋類別：
-				<select name="guestContentType">
-				<?php
-					echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>';
-					echo '<option value="產品"';if($search=="產品") echo ' selected';echo '>產品</option>';
-					echo '<option value="實績"';if($search=="實績") echo ' selected';echo '>實績</option>';
-					echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>';
-					echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>';
-					echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>';
-					echo '<option value="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</option>';
-					echo '<option value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</option>';
-				?>
-				</select><br>
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+				<select name="guestContentType">--類別--<span class="fa fa-caret-down"></span></button>
+                <ul class="dropdown-menu">
+				
+					<li><?php echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>'; ?></li>
+					<li><?php echo '<option value="產品"';if($search=="產品") echo ' selected';echo '>產品</option>'; ?></li>
+					<li><?php echo '<option value="實績"';if($search=="實績") echo ' selected';echo '>實績</option>'; ?></li>
+					<li><?php echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>'; ?></li>
+					<li><?php echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>'; ?></li>
+					<li><?php echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>'; ?></li>
+					<li><?php echo '<option value="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</option>'; ?></li>
+					<li><?php echo '<option value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</option>'; ?></li>
+				
+                </ul>
+				</select>
+
+                <br>
 				排序類別：
 				<select name="sortorder">
 				<?php
@@ -322,7 +329,13 @@ desired effect
 				?>
 				</select><br>
 				<input type="submit" value="送出">
-				</form>
+				    </form>
+                    </div>
+                <!-- /btn-group -->
+                <input type="text" class="form-control">
+              </div>
+              <!-- /input-group -->
+              
 				<form name="delete comment" method="post">
 				<input type="submit" value="刪除勾選的留言">
 <table align="center" width="60%" border="1">
@@ -385,9 +398,7 @@ desired effect
             </h1>
             -->
                 <br><br>
-                <a href="#">
-                    <button type="link" pull-right class="btn btn-primary">編輯</button>
-                </a>
+
             </section>
             <!-- /.content -->
         </div>
