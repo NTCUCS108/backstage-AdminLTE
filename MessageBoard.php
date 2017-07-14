@@ -293,12 +293,10 @@ desired effect
 
             <!-- Main content -->
             <section class="content container-fluid">
-			<div class="input-group input-group-lg">
-                <div class="input-group-btn">
                     <form name="search" method="get">
 				搜尋類別：
-                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-				<select name="guestContentType">--類別--<span class="fa fa-caret-down"></span></button>
+                <button name="guestContentType" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+				--類別--<span class="fa fa-caret-down"></span>
                 <ul class="dropdown-menu">
 				
 					<li><?php echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>'; ?></li>
@@ -311,7 +309,7 @@ desired effect
 					<li><?php echo '<option value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</option>'; ?></li>
 				
                 </ul>
-				</select>
+				</button>
 
                 <br>
 				排序類別：
@@ -335,7 +333,7 @@ desired effect
                 <input type="text" class="form-control">
               </div>
               <!-- /input-group -->
-              
+
 				<form name="delete comment" method="post">
 				<input type="submit" value="刪除勾選的留言">
 <table align="center" width="60%" border="1">
