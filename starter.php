@@ -204,7 +204,11 @@ desired effect
                 <!-- Sidebar Menu -->
                 
                 <ul class="sidebar-menu" data-widget="tree">
+                    <a href="../bootstrap-3.3.1/docs/examples/carousel/test_home.php">
                     <li class="header">
+                    查看前台網頁
+                    </li>
+                    </a>
                     <li>
                         <a href="FrontPage.php"><i class="fa fa-link"></i> <span>首頁</span>
                         </a>
@@ -223,7 +227,17 @@ desired effect
                             <i class="fa fa-link"></i> <span>公司簡介</span>
                         </a>
                     </li>
-                    <li><a href="ConnectWays.php"><i class="fa fa-link"></i> <span>聯絡方式</span></a></li>
+                    <li>
+                        <a href="ConnectWays.php"><i class="fa fa-link"></i> <span>聯絡方式</span></a>
+                    </li>
+                    <li>
+                        <a href="DashBoard.php"><i class="fa fa-bar-chart"></i> <span>數據分析</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../bootstrap-3.3.1/docs/examples/carousel/test_home.php"><i class="glyphicon glyphicon-flag"></i> <span>前台首頁</span>
+                        </a>
+                    </li>
 
                 </ul>
                 <!-- /.sidebar-menu -->
