@@ -16,10 +16,8 @@ else
 	$data=mysql_query("select * from slide");
 	$id = mysql_num_rows($data);
 }
-if($_POST['img_src']!='')
-	$img_src=$_POST['img_src'];
-if($_POST['header']!='')
-	$headers=$_POST['header'];
+if($_POST['headers']!='')
+	$headers=$_POST['headers'];
 if($_POST['description']!='')
 	$description=$_POST['description'];
 if($_POST['icon']!='')
@@ -28,23 +26,28 @@ if($_POST['link_src']!='')
 	$link_src=$_POST['link_src'];
 ?>
 <?php
-if($_GET['use_original_pic']=="true")
-	$_SESSION['img_src'] = $rs['img_src'];
-if(isset($headers) and isset($description) and isset($icon) and isset($link_src) and isset($_SESSION['img_src']))
+if(isset($headers) or isset($description) or isset($icon) or isset($link_src) or isset($_SESSION['img_src']))
 {
-	if($_GET['use_original_pic']!="true")
-		$_SESSION['img_src'] = substr($_SESSION['img_src'],3);//upload/test.php問題 因此需要去掉../
-	if($_GET['use_original_pic']=="false")
-		unlink("$rs[img_src]");
-	if(isset($_GET['id']))
+	$check = 0;
+	if($_GET['use_original_pic']=='true')
+		$_SESSION['img_src']=$rs['img_src'];
+	if(isset($headers) and isset($description) and isset($icon) and isset($link_src) and isset($_SESSION['img_src']))
 	{
-		mysql_query("update slide set headers = '$headers',description = '$description',icon = '$icon',link_src = '$link_src',img_src = '$_SESSION[img_src]' where slide_id = '$id'");
+		$check = 1;
+		if($_GET['use_original_pic']!="true")
+			$_SESSION['img_src'] = substr($_SESSION['img_src'],3);//upload/test.php問題 因此需要去掉../
+		if($_GET['use_original_pic']=="false")
+			unlink("$rs[img_src]");
+		if(isset($_GET['id']))
+		{
+			mysql_query("update slide set headers = '$headers',description = '$description',icon = '$icon',link_src = '$link_src',img_src = '$_SESSION[img_src]' where slide_id = '$id'");
+		}
+		else
+			mysql_query("Insert into slide value('$id','$_SESSION[img_src]','$headers','$description','$icon','$link_src')");
+		unset($_SESSION["img_src"]);
+		header("location:Carousel_edit.php");
+		exit();
 	}
-	else
-		mysql_query("Insert into slide value('$id','$_SESSION[img_src]','$headers','$description','$icon','$link_src')");
-	unset($_SESSION["img_src"]);
-	header("location:Carousel_edit.php");
-	exit();
 }	
 ?>
 <!DOCTYPE html>
@@ -295,13 +298,30 @@ desired effect
                 <br><br>
 				<?php if($_GET['use_original_pic']!="true")include("upload/upload_homepage_pic.php");?>
 				<form method="post">
-					header:<input type='text' name='header' value="<?php if(isset($rs))echo "$rs[headers]";?>"><br>
-					description:<input type='text' name='description' value="<?php if(isset($rs))echo "$rs[description]";?>"><br>
-					icon:<input type='text' name='icon' value="<?php if(isset($rs))echo "$rs[icon]";?>"><br>
-					link:<input type='text' name='link_src' value="<?php if(isset($rs))echo "$rs[link_src]";else echo '#';?>"><br>
+					標題:<input type='text' name='headers' value="<?php if($_POST['headers'] != '') echo "$_POST[headers]"; else if(isset($rs))echo "$rs[headers]";?>"><br>
+					敘述:<input type='text' name='description' value="<?php if($_POST['description'] != '') echo "$_POST[description]"; else if(isset($rs))echo "$rs[description]";?>"><br>
+					按鈕:<input type='text' name='icon' value="<?php if($_POST['icon'] != '') echo "$_POST[icon]"; else if(isset($rs))echo "$rs[icon]";?>"><br>
+					連結:<input type='text' name='link_src' value="<?php if($_POST['link_src'] != '') echo "$_POST[link_src]"; else if(isset($rs))echo "$rs[link_src]";else echo '#';?>"><br>
 					<input type='submit' value='提交'><br>
 				</form>
-				
+				<?php
+				if(isset($check) and $check==0)
+				{
+					echo "上傳失敗<br>未輸入：";
+					if(!isset($_SESSION['img_src']))
+						echo "圖片位址 ";
+					if(!isset($headers))
+						echo "標題 ";
+					if(!isset($description))
+						echo "敘述 ";
+					if(!isset($icon))
+						echo "按鈕 ";
+					if(!isset($link_src))
+						echo "連結";
+				}
+				if(!isset($check) and isset($_POST['headers']))
+					echo "尚未開始輸入";
+				?>
             </section>
             <!-- /.content -->
         </div>
