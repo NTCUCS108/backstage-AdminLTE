@@ -1,4 +1,7 @@
 <?php
+session_start();
+if($_SESSION['login'] != "yes")
+	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
 if(!isset($_GET['id']))
 	header("location:Carousel_edit.php");
 include("carousel_connect.php");
