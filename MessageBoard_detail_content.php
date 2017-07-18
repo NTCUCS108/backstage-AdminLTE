@@ -1,6 +1,15 @@
-<h1 align="center">第<?php echo $id;?>則留言</h1><br>
-				<button onclick="location.href = 'MessageBoard.php';">回管理留言板</button>
-				<br>
+<button onclick="location.href = 'MessageBoard.php';" class="btn btn-success">回管理留言板</button>
+
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+	<div class="box">
+		<div class="box-header">
+			<h1 align="center">第<?php echo $id;?>則留言</h1>
+		</div>
+		<!-- /.box-header -->		
+				<br><br><br>
+			<div class="box-body no-padding">
 				<table align="center" width="60%" border="1">
 					<tr>
 						<td width="20%"><?php echo "主旨："?></td>
@@ -47,8 +56,15 @@
 							</tr>
 					<?php } ?>
 				</table>
+			</div>
+	
 				<br>
+				<div class="box-tools">
 				<p align="center">
 					<a href="Message_reply.php?id=<?php echo $rs[guestID];?>">回覆</a>
 					<a href="Message_delete.php?id=<?php echo $rs[guestID];?>">刪除</a>
 				</p>
+				</div>
+		</div>
+</div>
+</div>
