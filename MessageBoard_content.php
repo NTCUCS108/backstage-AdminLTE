@@ -1,43 +1,48 @@
 <form name="search" method="get">
-				搜尋類別：
-                <button name="guestContentType" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-				--類別--<span class="fa fa-caret-down"></span>
+				<b><h2>查看留言板</h2></b>
+				<font size="3">搜尋類別：</font>
+                <select name="guestContentType" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+				<span class="fa fa-caret-down"></span>
                 <ul class="dropdown-menu">
 				
-					<?php echo '<li value="不限"';if($search=="不限") echo ' selected';echo '>不限</li>'; ?>
-					<?php echo '<li value="產品"';if($search=="產品") echo ' selected';echo '>產品</li>'; ?>
-					<?php echo '<li value="實績"';if($search=="實績") echo ' selected';echo '>實績</li>'; ?>
-					<?php echo '<li value="其他"';if($search=="其他") echo ' selected';echo '>其他</li>'; ?>
-					<?php echo '<li value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</li>'; ?>
-					<?php echo '<li value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</li>'; ?>
-					<?php echo '<li value="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</li>'; ?>
-					<?php echo '<li value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</li>'; ?>
+					<?php echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>'; ?>
+					<?php echo '<option value="產品"';if($search=="產品") echo ' selected';echo '>產品</option>'; ?>
+					<?php echo '<option value="實績"';if($search=="實績") echo ' selected';echo '>實績</option>'; ?>
+					<?php echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>'; ?>
+					<?php echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>'; ?>
+					<?php echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>'; ?>
+					<?php echo '<optionvalue="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</option>'; ?>
+					<?php echo '<option value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</option>'; ?>
 				
                 </ul>
-				</button>
+				</select>
 
                 <br>
-				排序類別：
-				<select name="sortorder">
-				<?php
-					echo '<option value="guestTime"';if($sortorder=="guestTime") echo ' selected';echo '>時間</option>';
-					echo '<option value="browse_count"';if($sortorder=="browse_count") echo ' selected';echo '>瀏覽人數</option>';
-				?>
+				<font size="3">排序類別：</font>
+				<select name="sortorder" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+				<span class="fa fa-caret-down"></span>
+				<ul class="dropdown-menu">
+				
+					<?php echo '<option value="guestTime"';if($sortorder=="guestTime") echo ' selected';echo '>時間</option>'; ?>
+					<?php echo '<option value="browse_count"';if($sortorder=="browse_count") echo ' selected';echo '>瀏覽人數</option>'; ?>
+				
 				</select><br>
-				排序順序：
-				<select name="sortway">
-				<?php
-					echo '<option value="desc"';if($sortway=="desc") echo ' selected';echo '>新or多</option>';
-					echo '<option value=""';if($sortway=="") echo ' selected';echo '>舊or少</option>';
-				?>
+				<font size="3">排序順序：</font>
+				<select name="sortway" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+				<span class="fa fa-caret-down"></span>
+				<ul class="dropdown-menu">
+				
+					<?php echo '<option value="desc"';if($sortway=="desc") echo ' selected';echo '>新or多</option>'; ?>
+					<?php echo '<option value=""';if($sortway=="") echo ' selected';echo '>舊or少</option>'; ?>
+				
 				</select><br>
-				<input type="submit" value="送出">
-				    </form>
- 
+				<input type="submit" class="btn btn-primary" value="送出">
+</form>
+<br><br><br> 
 
 				<form name="delete comment" method="post">
-				<input type="submit" value="刪除勾選的留言">
-<table align="center" width="60%" border="1">
+				<input type="submit" class="btn btn-warning" value="刪除勾選的留言">
+				<table align="center" width="60%" border="1">
 					<tr>
 						<td width="5%">
 							刪除

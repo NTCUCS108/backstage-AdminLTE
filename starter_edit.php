@@ -13,7 +13,7 @@ if($_POST['editor1']!='')
     header("location:starter.php");
 }
 ob_start();                      // start capturing output
-include('starter__edit_header.php');   // execute the file
+include('starter_edit_header.php');   // execute the file
 $header = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
