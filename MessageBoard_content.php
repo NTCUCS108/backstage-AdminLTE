@@ -1,4 +1,4 @@
-<form name="search" method="get">
+			<form name="search" method="get">
 				<b><h2>查看留言板</h2></b>
 				<font size="3">搜尋類別：</font>
                 <select name="guestContentType" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -38,31 +38,51 @@
 				</select><br>
 				<input type="submit" class="btn btn-primary" value="送出">
 </form>
-<br><br><br> 
 
-				<form name="delete comment" method="post">
+
+        <div class="box">
+
+            <div class="box-header">
+	           	<p align="center">
+		        <font size="6">留言板</font>
+		        </p>
+
+              	<ul class="pagination pagination-sm no-margin pull-right">
+				<li align="center">
+				<?php
+				for($i=1;$i<=$page_num;$i++)
+					echo "<a href='MessageBoard.php?guestContentType=$search&sortorder=$sortorder&sortway=$sortway&page=$i'>$i </a>"//顯示頁數
+				?>
+				</li>
+				</ul>
+
+
+			</div>
+            <!- /.box-header -->
+            <div class="box-body">
+            	<form name="delete comment" method="post" role="form" class="form">
 				<input type="submit" class="btn btn-warning" value="刪除勾選的留言">
-				<table align="center" width="60%" border="1">
+
+				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
-						<td width="5%">
-							刪除
-						</td>
-						<td width="5%">ID</td>
-						<td width="5%">類型</td>
-						<td width="60%">主旨：</td>
-						<td width="10%">瀏覽人數</td>
-						<td width="10%">已回覆</td>
-						<td width="5%">已讀</td>
+						<th width="5%">刪除</th>
+						<th width="5%">ID</th>
+						<th width="5%">類型</th>
+						<th width="60%">主旨：</th>
+						<th width="10%">瀏覽人數</th>
+						<th width="10%">已回覆</th>
+						<th width="5%">已讀</th>
 					</tr>
-				</table>
+
+
 				<?php
 				for($i=1;$i<=mysql_num_rows($data);$i++){
 					$rs = mysql_fetch_assoc($data);
 				?>
-				<table align="center" width="60%" border="1">
+				
 					<tr>
 						<td width="5%">
-							<input type="checkbox" name="delete[]" value="<?php echo $rs[guestID];?>">
+							<input type="checkbox" class="checkbox" name="delete[]" value="<?php echo $rs[guestID];?>">
 						</td>
 						<td width="5%"><?php echo "$rs[guestID]"?></td>
 						<td width="5%"><?php echo "$rs[guestContentType]"?></td>
@@ -81,14 +101,20 @@
 								echo "<td width='10%' style='color:red;'>n</td>";
 						?>
 					</tr>
-				</table>
+				
+
+
+				
 				<?php
 				}
 				?>
+				</table>
+				</div>
 				</form>
-				<p align="center">
-				<?php
-				for($i=1;$i<=$page_num;$i++)
-					echo "<a href='MessageBoard.php?guestContentType=$search&sortorder=$sortorder&sortway=$sortway&page=$i'>$i </a>"//顯示頁數
-				?>
-				</p>
+			</div>
+
+
+		</div>
+
+
+			
