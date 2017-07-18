@@ -1,6 +1,8 @@
-			<form name="search" method="get">
-				<b><h2>查看留言板</h2></b>
-				<font size="3">搜尋類別：</font>
+<div class="row">
+	<div class="col-md-4">
+		<form name="search" method="get">
+			<p><font size="4">查看留言板</font></p>
+			<font size="2">搜尋類別：</font>
                 <select name="guestContentType" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
 				<span class="fa fa-caret-down"></span>
                 <ul class="dropdown-menu">
@@ -17,57 +19,60 @@
                 </ul>
 				</select>
 
-                <br>
-				<font size="3">排序類別：</font>
+            <br>
+				<font size="2">排序類別：</font>
 				<select name="sortorder" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
 				<span class="fa fa-caret-down"></span>
 				<ul class="dropdown-menu">
 				
 					<?php echo '<option value="guestTime"';if($sortorder=="guestTime") echo ' selected';echo '>時間</option>'; ?>
 					<?php echo '<option value="browse_count"';if($sortorder=="browse_count") echo ' selected';echo '>瀏覽人數</option>'; ?>
-				
+				</ul>
 				</select><br>
-				<font size="3">排序順序：</font>
+				<font size="2">排序順序：</font>
 				<select name="sortway" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
 				<span class="fa fa-caret-down"></span>
 				<ul class="dropdown-menu">
 				
 					<?php echo '<option value="desc"';if($sortway=="desc") echo ' selected';echo '>新or多</option>'; ?>
 					<?php echo '<option value=""';if($sortway=="") echo ' selected';echo '>舊or少</option>'; ?>
-				
+				</ul>
 				</select><br>
 				<input type="submit" class="btn btn-primary" value="送出">
-</form>
+			</form>
+		</div>
+	</div>
 
-
-        <div class="box">
-
-            <div class="box-header">
-	           	<p align="center">
-		        <font size="6">留言板</font>
-		        </p>
-
-              	<ul class="pagination pagination-sm no-margin pull-right">
-				<li align="center">
+<section class="content">
+<div class="row">
+<div class="col-md-12">
+   	<div class="box">
+   		<div class="box-header">
+	        <p align="center">
+		    <font size="6">留言板</font>
+		    </p>
+		</div>
+		<!-- /.box-header -->
+            
+            <div class="box-tools">
+                <ul class="pagination pagination-sm no-margin pull-right">
+				<li>
 				<?php
 				for($i=1;$i<=$page_num;$i++)
 					echo "<a href='MessageBoard.php?guestContentType=$search&sortorder=$sortorder&sortway=$sortway&page=$i'>$i </a>"//顯示頁數
 				?>
 				</li>
 				</ul>
-
-
 			</div>
-            <!- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" class="col-md-12">
             	<form name="delete comment" method="post" role="form" class="form">
 				<input type="submit" class="btn btn-warning" value="刪除勾選的留言">
 
 				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
-						<th width="5%">刪除</th>
-						<th width="5%">ID</th>
-						<th width="5%">類型</th>
+						<th width="10%">刪除</th>
+						<th width="10%">ID</th>
+						<th width="10%">類型</th>
 						<th width="60%">主旨：</th>
 						<th width="10%">瀏覽人數</th>
 						<th width="10%">已回覆</th>
@@ -109,12 +114,9 @@
 				}
 				?>
 				</table>
-				</div>
 				</form>
 			</div>
-
-
 		</div>
-
-
-			
+	</div>
+</div>
+</section>			
