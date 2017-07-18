@@ -145,7 +145,7 @@ desired effect
                         <!-- Menu Footer -->
                         <li class="user-footer">
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">登出</a>
+                                <a href="logout.php" class="btn btn-default btn-flat">登出</a>
                             </div>
                         </li>
                         </ul>
