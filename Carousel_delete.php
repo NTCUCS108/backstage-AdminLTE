@@ -9,9 +9,11 @@ $id = $_GET['id'];
 //echo $_GET['id'];
 $data=mysql_query("select * from slide where slide_id = '$id'");
 $rs=mysql_fetch_assoc($data);
-unlink("$rs[img_src]");//delete file
-mysql_query("delete from slide where slide_id = '$id'");
-$data=mysql_query("select * from slide order by slide_id");
+$deletetime=date("Y/m/d G:i:s");
+$deletepath = explode("/img/",$rs[img_src]);
+rename("$rs[img_src]","$deletepath[0]/delete_img/$deletepath[1]");//move file
+mysql_query("update slide set slide_id = '-1',img_src = '$deletepath[0]/delete_img/$deletepath[1]',dead_time = '$deletetime' where slide_id='$rs[slide_id]'");
+$data=mysql_query("select * from slide  where slide_id != '-1' order by slide_id");
 for($i=0;$i<mysql_num_rows($data);$i++)
 {
 	$rs = mysql_fetch_assoc($data);
