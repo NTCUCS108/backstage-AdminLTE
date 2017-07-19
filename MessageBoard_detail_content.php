@@ -61,8 +61,8 @@
 				<br>
 				<div class="box-tools">
 				<p align="center">
-					<a href="Message_reply.php?id=<?php echo $rs[guestID];?>">回覆</a>
-					<a href="Message_delete.php?id=<?php echo $rs[guestID];?>">刪除</a>
+					<a href="Message_reply.php?id=<?php echo $rs[guestID];?>" class="btn btn-primary">回覆</a>
+					<a href="Message_delete.php?id=<?php echo $rs[guestID];?>" class="btn btn-warning">刪除</a>
 				</p>
 				</div>
 		</div>
