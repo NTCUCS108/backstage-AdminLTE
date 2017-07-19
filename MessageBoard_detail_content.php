@@ -1,6 +1,6 @@
 <button onclick="location.href = 'MessageBoard.php';" class="btn btn-success">回管理留言板</button>
 
-
+<section class="content">
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
 	<div class="box">
@@ -9,8 +9,8 @@
 		</div>
 		<!-- /.box-header -->		
 				<br><br><br>
-			<div class="box-body no-padding">
-				<table align="center" width="60%" border="1">
+			<div class="box-body" class="col-md-8 col-md-offset-2">
+				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
 						<td width="20%"><?php echo "主旨："?></td>
 						<td width="80%"><?php echo $rs[guestSubject]?></td>
@@ -68,3 +68,4 @@
 		</div>
 </div>
 </div>
+</section>
