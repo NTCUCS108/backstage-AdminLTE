@@ -1,4 +1,4 @@
-<button onclick="location.href = 'MessageBoard.php';" class="btn btn-success">回管理留言板</button>
+<button onclick="location.href = 'MessageBoard.php';" class="btn btn-primary">回管理留言板</button>
 
 <section class="content">
 <div class="row">
@@ -61,7 +61,7 @@
 				<br>
 				<div class="box-tools">
 				<p align="center">
-					<a href="Message_reply.php?id=<?php echo $rs[guestID];?>" class="btn btn-primary">回覆</a>
+					<a href="Message_reply.php?id=<?php echo $rs[guestID];?>" class="btn btn-success">回覆</a>
 					<a href="Message_delete.php?id=<?php echo $rs[guestID];?>" class="btn btn-warning">刪除</a>
 				</p>
 				</div>

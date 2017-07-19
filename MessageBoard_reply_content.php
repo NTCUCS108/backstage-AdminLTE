@@ -1,9 +1,18 @@
-<h1 align="center">回覆頁面</h1>
+<section class="content">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+	<div class="box">
+		<div class="box-header">
+			<h1 align="center">回覆頁面</h1>
+		</div>
+
+
 				<?php
 				$rs = mysql_fetch_assoc($data);
 				?>
-				<table align="center" width="60%" border="1">
-					<tr>
+		<div class="box-body" class="col-md-8 col-md-offset-2">
+				<table align="center" width="60%" border="1" class="table table-bordered">
+					<tr><td width="20%"><?php echo "主旨：";?></td>
 						<td width="20%"><?php echo $rs[guestSubject];?></td>
 					</tr>
 					<tr>
@@ -27,10 +36,15 @@
 						<td width="80%"><?php echo $rs[guestTime];?></td>
 					</tr>
 				</table>
+		</div>		
 				<br>
 				<form id="reply_form" name="reply_form" method="post" align="center">
-				回覆內容：
+				回覆內容
 				<br><textarea name="reply" id="reply" style="width:60%;" rows="8">
 				</textarea><br>
-				<input type="submit" value="送出">
+				<input type="submit" class="btn btn-success" value="送出">
 				</form>
+	</div>
+</div>
+</div>
+</section>			
