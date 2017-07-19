@@ -1,5 +1,5 @@
  <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                         <div class="box box-info">
                             <div class="box-header">
                                 <h3><class="box-little">HTML語法文字編輯器
@@ -18,13 +18,18 @@
                                         var content = Document.getElementById('editor1').value;
                                     </script>
                                     </textarea>
-                                    <!-- ***Store Button*** -->
-                                    <div class="pull-right">
-                                        <button type="link" pull-right class="btn btn-flat">取消編輯</button>
-                                    </div>
+                                    <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+
                                     <!-- ***Store Button*** -->
                                     <div class="pull-left">
-                                        <button type="submit" pull-left class="btn btn-primary">儲存編輯</button>
+                                         <button type="submit" class="btn btn-success" class="pull-left">儲存編輯</button>
+                                    </div>
+                                    <div class="pull-right">    
+                                        <button type="link" class="btn btn-flat" class="pull-right">取消編輯</button>
+                                    </div>
+
+                                    </div>
                                     </div>
                                 </form>
                             </div>
