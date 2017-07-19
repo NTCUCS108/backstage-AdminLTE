@@ -30,7 +30,6 @@
 				<br>
 				<form id="reply_form" name="reply_form" method="post" align="center">
 				回覆內容：
-				<br><textarea name="reply" id="reply" style="width:60%;" rows="8">
-				</textarea><br>
+				<br><textarea name="reply" id="reply" style="width:60%;" rows="8"></textarea><br>
 				<input type="submit" value="送出">
 				</form>
