@@ -6,10 +6,6 @@
 			<h1 align="center">回覆頁面</h1>
 		</div>
 
-
-				<?php
-				$rs = mysql_fetch_assoc($data);
-				?>
 		<div class="box-body" class="col-md-8 col-md-offset-2">
 				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr><td width="20%"><?php echo "主旨：";?></td>
@@ -48,4 +44,3 @@
 </div>
 </div>
 </section>			
-

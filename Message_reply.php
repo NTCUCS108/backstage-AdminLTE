@@ -13,6 +13,7 @@ if(!isset($_GET["id"]))
 $id = $_GET["id"];
 $guestReply = $_POST["reply"];
 $data = mysql_query("select * from comment where guestID = '$id'");
+$rs = mysql_fetch_assoc($data);
 if(isset($guestReply))
 {
 	$time = date("Y/m/d G:i:s");
