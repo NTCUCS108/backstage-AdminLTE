@@ -213,6 +213,9 @@ desired effect
                         <a href="ConnectWays.php"><i class="fa fa-link"></i> <span>聯絡方式</span></a>
                     </li>
                     <li>
+                        <a href="Page.php"><i class="fa fa-link"></i> <span>編輯頁面</span></a>
+                    </li>
+                    <li>
                         <a href="DashBoard.php"><i class="fa fa-bar-chart"></i> <span>數據分析</span>
                         </a>
                     </li>
