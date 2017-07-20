@@ -12,7 +12,7 @@
 				</div>
 				<div class="pull-right">
                 <a href="Page_delete.php?name=<?php echo "$rs[name]";?>">
-                    <button type="link" class="btn" class="pull-right">
+                    <button type="link" class="btn btn-danger" class="pull-right">
                     刪除
                     </button>
                 </a>
