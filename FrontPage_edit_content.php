@@ -10,9 +10,11 @@
                             <div class="box-body pad">
                                 <form method="post" accept-charset="utf-8">
                                     <textarea id="editor1" name="editor1" rows="10" cols="80">
+                                    
                                     <?php
                                     echo "$rs[1]";
                                     ?>
+                                    
                                     <script type="text/javascript">
                                     var content = Document.getElementById('editor1').value;
                                     </script>

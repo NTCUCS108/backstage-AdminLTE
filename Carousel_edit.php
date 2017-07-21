@@ -32,5 +32,9 @@ ob_start();                      // start capturing output
 include('Carousel_edit_content.php');   // execute the file
 $content = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
+ob_start();                      // start capturing output
+include('carousel_script.php');   // execute the file
+$script = ob_get_contents();    // get the contents from the buffer
+ob_end_clean(); 
 include("master.php");
 ?>

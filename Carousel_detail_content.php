@@ -1,7 +1,19 @@
-<br><br>
+<br>
+<section class="content">
+<div class="row">
+<div class="col-md-offset-2 col-md-8">
+<div class="box">
 				<h1 align="center">第<?php echo $id;?>則投影</h1><br>
-				<button onclick="location.href = 'Carousel_edit.php';">回管理首頁板</button><br>
-				<table align="center" width="60%" border="1">
+				<div class="box-header">
+				<div class="col-md-offset-4 col-md-4">	
+					<p align="center">
+						<button class="btn btn-primary" onclick="location.href = 'Carousel_edit.php';">回管理首頁板</button><br>
+					</p>
+				</div>
+				</div>
+	
+	<div class="box-body">
+				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
 						<td width="20%"><?php echo "投影片id：$rs[slide_id]";?></td>
 					</tr>
@@ -30,7 +42,15 @@
 						<td width="80%"><?php echo "$rs[link_src]";?></td>
 					</tr>
 				</table>
-				<p align="center">
-					<a href="Carousel_edit_mode_select.php?id=<?php echo "$rs[slide_id]"?>">編輯</a>
-					<a href="Carousel_delete.php?id=<?php echo "$rs[slide_id]"?>">刪除</a>
-				</p>
+				<div class="col-md-offset-3 col-md-1">
+						<a href="Carousel_edit_mode_select.php?id=<?php echo "$rs[slide_id]"?>" class="btn btn-success">編輯</a>
+				</div>
+				<div class="col-md-offset-4 col-md-1">
+						<a href="Carousel_delete.php?id=<?php echo "$rs[slide_id]"?>" class="btn btn-warning">刪除</a>
+				</div>
+				
+	</div>
+</div>
+</div>
+</div>
+</section>
