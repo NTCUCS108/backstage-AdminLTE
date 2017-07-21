@@ -36,34 +36,34 @@ else
 	$sortway=$_GET["sortway"];
 $num = 10;//一頁筆數
 if($search=="不限")//符合的資料共有幾筆
-	$data = mysql_query("select * from comment");
+	$display = mysql_query("select * from comment");
 else if($search=="已回覆")
-	$data = mysql_query("select * from comment where guestReply != ''");
+	$display = mysql_query("select * from comment where guestReply != ''");
 else if($search=="未回覆")
-	$data = mysql_query("select * from comment where guestReply = ''");
+	$display = mysql_query("select * from comment where guestReply = ''");
 else if($search=="未讀")
-	$data = mysql_query("select * from comment where admin_read = '0'");
+	$display = mysql_query("select * from comment where admin_read = '0'");
 else if($search=="已讀")
-	$data = mysql_query("select * from comment where admin_read = '1'");
+	$display = mysql_query("select * from comment where admin_read = '1'");
 else
-	$data = mysql_query("select * from comment where guestContentType = '$search'");
+	$display = mysql_query("select * from comment where guestContentType = '$search'");
 $page = $_GET["page"];//目前在第幾頁
 if(!isset($page))
 	$page = 1;//未設定則內建1
 $start = ($page-1)*$num;//跟著頁數變化資料從第幾筆開始顯示
-$page_num = ceil(mysql_num_rows($data)/$num);//一共幾頁
+$page_num = ceil(mysql_num_rows($display)/$num);//一共幾頁
 if($search=="不限")
-	$data = mysql_query("select * from comment order by $sortorder $sortway limit $start,$num");//抓取正確範圍的資料
+	$display = mysql_query("select * from comment order by $sortorder $sortway limit $start,$num");//抓取正確範圍的資料
 else if($search=="已回覆")
-	$data = mysql_query("select * from comment where guestReply != '' order by $sortorder $sortway limit $start,$num");
+	$display = mysql_query("select * from comment where guestReply != '' order by $sortorder $sortway limit $start,$num");
 else if($search=="未回覆")
-	$data = mysql_query("select * from comment where guestReply = '' order by $sortorder $sortway limit $start,$num");
+	$display = mysql_query("select * from comment where guestReply = '' order by $sortorder $sortway limit $start,$num");
 else if($search=="未讀")
-	$data = mysql_query("select * from comment where admin_read = '0' order by $sortorder $sortway limit $start,$num");
+	$display = mysql_query("select * from comment where admin_read = '0' order by $sortorder $sortway limit $start,$num");
 else if($search=="已讀")
-	$data = mysql_query("select * from comment where admin_read = '1' order by $sortorder $sortway limit $start,$num");
+	$display = mysql_query("select * from comment where admin_read = '1' order by $sortorder $sortway limit $start,$num");
 else
-	$data = mysql_query("select * from comment where guestContentType = '$search' order by $sortorder $sortway limit $start,$num");
+	$display = mysql_query("select * from comment where guestContentType = '$search' order by $sortorder $sortway limit $start,$num");
 ob_start();                      // start capturing output
 include('MessageBoard_header.php');   // execute the file
 $header = ob_get_contents();    // get the contents from the buffer

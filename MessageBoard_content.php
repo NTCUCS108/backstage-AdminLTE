@@ -6,19 +6,26 @@
                 <select name="guestContentType" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
 				<span class="fa fa-caret-down"></span>
                 <ul class="dropdown-menu">
-				
+				<?php 
+					$type = mysql_query("select * from guestcontenttype where live = 1 order by post_id");
+				?>
 					<?php echo '<option value="不限"';if($search=="不限") echo ' selected';echo '>不限</option>'; ?>
-					<?php echo '<option value="產品"';if($search=="產品") echo ' selected';echo '>產品</option>'; ?>
-					<?php echo '<option value="實績"';if($search=="實績") echo ' selected';echo '>實績</option>'; ?>
+					<?php
+						for($i=1;$i<=mysql_num_rows($type);$i++)
+						{
+							$t_rs = mysql_fetch_assoc($type);
+							echo "<option value=$t_rs[name]";if($search=="$t_rs[name]") echo ' selected';echo ">$t_rs[name]</option>";
+						}
+					?>
 					<?php echo '<option value="其他"';if($search=="其他") echo ' selected';echo '>其他</option>'; ?>
 					<?php echo '<option value="已回覆"';if($search=="已回覆") echo ' selected';echo '>已回覆</option>'; ?>
 					<?php echo '<option value="未回覆"';if($search=="未回覆") echo ' selected';echo '>未回覆</option>'; ?>
-					<?php echo '<optionvalue="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</option>'; ?>
+					<?php echo '<option value="已讀"';if($search=="已讀") echo ' selected';echo '>已讀</option>'; ?>
 					<?php echo '<option value="未讀"';if($search=="未讀") echo ' selected';echo '>未讀</option>'; ?>
 				
                 </ul>
 				</select>
-
+			<a href="MessageContentType_edit.php" class="btn btn-primary">編輯</a>
             <br>
 				<font size="2">排序類別：</font>
 				<select name="sortorder" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -81,26 +88,26 @@
 
 
 				<?php
-				for($i=1;$i<=mysql_num_rows($data);$i++){
-					$rs = mysql_fetch_assoc($data);
+				for($i=1;$i<=mysql_num_rows($display);$i++){
+					$d_rs = mysql_fetch_assoc($display);
 				?>
 				
 					<tr>
 						<td width="5%">
-							<input type="checkbox" class="checkbox" name="delete[]" value="<?php echo $rs[guestID];?>">
+							<input type="checkbox" class="checkbox" name="delete[]" value="<?php echo "$d_rs[guestID]";?>">
 						</td>
-						<td width="5%"><?php echo "$rs[guestID]"?></td>
-						<td width="5%"><?php echo "$rs[guestContentType]"?></td>
-						<td width="60%"><?php echo "<a href='MessageBoard_detail.php?id=$rs[guestID]'>$rs[guestSubject]</a>"?></td>
-						<td width="10%"><?php echo $rs[browse_count]?></td>
+						<td width="5%"><?php echo "$d_rs[guestID]";?></td>
+						<td width="5%"><?php echo "$d_rs[guestContentType]";?></td>
+						<td width="60%"><?php echo "<a href='MessageBoard_detail.php?id=$d_rs[guestID]'>$d_rs[guestSubject]</a>";?></td>
+						<td width="10%"><?php echo "$d_rs[browse_count]";?></td>
 						<?php 
-							if($rs[guestReply]!="")
+							if($d_rs[guestReply]!="")
 								echo "<td width='10%' style='color:green;'>y</td>";
 							else
 								echo "<td width='10%' style='color:red;'>n</td>";
 						?>
 						<?php 
-							if($rs[admin_read]=="1")
+							if($d_rs[admin_read]=="1")
 								echo "<td width='10%' style='color:green;'>y</td>";
 							else
 								echo "<td width='10%' style='color:red;'>n</td>";
