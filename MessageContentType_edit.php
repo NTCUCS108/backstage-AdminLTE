@@ -46,7 +46,7 @@ if(isset($_POST['checked']))
 			for($k=1;$k<=mysql_num_rows($move);$k++)
 			{
 				$m_rs = mysql_fetch_assoc($move);
-				$deletetime = date("Y/m/d G:i:s");
+				$deletetime = date("Y-m-d G:i:s");
 				mysql_query("insert into dead_comment value('$m_rs[guestID]','$m_rs[guestName]','$m_rs[guestEmail]','$m_rs[guestGender]','$m_rs[guestSubject]','$m_rs[guestTime]','$m_rs[guestContentType]','$m_rs[guestContent]','$m_rs[guestReply]','$m_rs[guestReplyTime]','$m_rs[browse_count]','$m_rs[admin_read]','$deletetime')");
 				mysql_query("delete from comment where guestID = '$m_rs[guestID]'");
 			}
@@ -78,7 +78,7 @@ if(isset($_POST['checked']))
 		for($k=1;$k<=mysql_num_rows($move);$k++)
 		{
 			$m_rs = mysql_fetch_assoc($move);
-			$deletetime = date("Y/m/d G:i:s");
+			$deletetime = date("Y-m-d G:i:s");
 			mysql_query("insert into dead_comment value('$m_rs[guestID]','$m_rs[guestName]','$m_rs[guestEmail]','$m_rs[guestGender]','$m_rs[guestSubject]','$m_rs[guestTime]','$m_rs[guestContentType]','$m_rs[guestContent]','$m_rs[guestReply]','$m_rs[guestReplyTime]','$m_rs[browse_count]','$m_rs[admin_read]','$deletetime')");
 			mysql_query("delete from comment where guestID = '$m_rs[guestID]'");
 		}

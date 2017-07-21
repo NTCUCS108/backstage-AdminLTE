@@ -9,6 +9,8 @@ $data=mysql_query("select * from backstagehome"); //從contact資料庫中選擇
 $rs=mysql_fetch_row($data);
 if($_POST['editor1']!='')
 {
+	$edittime = date("Y-m-d G:i:s");
+	mysql_query("insert into edit_backstagehome value('$rs[0]','$edittime')");
     mysql_query("update backstagehome set backstageHome = '$_POST[editor1]'");
     header("location:starter.php");
 }
