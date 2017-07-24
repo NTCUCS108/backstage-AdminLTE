@@ -7,10 +7,11 @@
 				for($i=1;$i<=mysql_num_rows($data);$i++){
 					$rs = mysql_fetch_assoc($data);
 				?>
-				<table align="center" width="10%" border="1">
+				<table align="center" width="20%" border="1">
 					<tr>
 						<td width="15%"><input type='checkbox' name='delete[]' value='<?php echo "$rs[name]";?>'></td>
-						<td width="85%"><a href='./Page_browse.php?name=<?php echo "$rs[name]";?>'><?php echo "$rs[name]";?></a></td>
+						<td width="15%"><?php echo "$rs[parent]";?></td>
+						<td width="70%"><a href='./Page_browse.php?name=<?php echo "$rs[name]";?>'><?php echo "$rs[name]";?></a></td>
 					</tr>
 				</table>
 				<?php

@@ -19,9 +19,9 @@ if($_POST['editor1'] != '' and $_POST['name'] != '')
 	$backup = mysql_query("select * from page_data where name = '$_GET[name]'");
 	$b_rs = mysql_fetch_assoc($backup);
 	$edittime = date("Y/m/d G:i:s");
-	mysql_query("insert into edit_page value('$b_rs[content]','$b_rs[name]','$edittime','$rs[post_id]')");
+	mysql_query("insert into edit_page value('$b_rs[content]','$b_rs[name]','$rs[parent]','$edittime','$rs[post_id]')");
 	mysql_query("update page_data set content = '$_POST[editor1]',name = '$_POST[name]' where name = '$rs[name]'");
-	mysql_query("update page set name = '$_POST[name]' where post_id = '$rs[post_id]'");
+	mysql_query("update page set name = '$_POST[name]',parent = '$_POST[parent]' where post_id = '$rs[post_id]'");
     header("location:Page_browse.php?name=$_POST[name]");
 }
 ob_start();                      // start capturing output
