@@ -1,6 +1,6 @@
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-edit"></i>管理者後台</a></li>
-                    <li class="active">後台主頁</li>
+                    <li class="active"><a href='http://ntcucsintern.ddns.net/backstage-AdminLTE/starter.php'>後台主頁</a></li>
                 </ol>
 
                 <br>
