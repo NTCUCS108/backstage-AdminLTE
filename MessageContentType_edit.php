@@ -7,7 +7,7 @@ include("message_connect.php");
 if(isset($_POST['add']))
 {
 	$conflic = mysql_query("select * from guestContenttype where name = '$_POST[add]'");
-	if(mysql_num_rows($conflic)>0)
+	if(mysql_num_rows($conflic)>0 or $_POST['add'] == '其他' or $_POST['add'] == '已回覆' or $_POST['add'] == '未回覆' or $_POST['add'] == '已讀' or $_POST['add'] == '未讀')
 	{
 		$error = 1;
 	}
