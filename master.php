@@ -93,30 +93,44 @@ desired effect
                             <ul class="dropdown-menu">
                                 <li class="header"><a href="MessageBoard.php?guestContentType=未讀">系統有<?php echo "$_SESSION[havenot_read_num]";?>則未讀留言!</a></li>
 								<li class="header"><a href="MessageBoard.php?guestContentType=未回覆">系統有<?php echo "$_SESSION[havenot_reply_num]";?>則未回覆留言!</a></li>
+                                <?php 
+                                    mysql_close();
+                                    include("message_connect.php");
+                                    $message = mysql_query("select * from comment where admin_read = '0' order by guestTime desc limit 0,3");
+                                    if(mysql_num_rows($message)>0)
+                                    {
+                                ?>
                                 <li>
                                     <!-- inner menu: contains the messages -->
                                     <ul class="menu">
+                                        <?php 
+                                            for($i=1;$i<=mysql_num_rows($message);$i++)
+                                            {
+                                                $m_rs = mysql_fetch_assoc($message);
+                                        ?>
                                         <li>
                                             <!-- start message -->
-                                            <a href="#">
+                                            <a href="http://ntcucsintern.ddns.net/backstage-AdminLTE/MessageBoard_detail.php?id=<?php echo $m_rs['guestID'];?>">
                                                 <div class="pull-left">
                                                     <!-- User Image -->
-                                                    <img src="dist/img/user_ji.jpg" class="img-circle" alt="User Image">
+                                                    <img src="img/guest.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <!-- Message title and timestamp -->
                                                 <h4>
-                                                    ㄇㄚˊ幾
-                                                    <small><i class="fa fa-clock-o"></i> 3分鐘前</small>
+                                                    <?php echo $m_rs['guestName'];?>
+                                                    <small><i class="fa fa-clock-o"></i> <?php echo $m_rs['guestTime'];?></small>
                                                 </h4>
                                                 <!-- The message -->
-                                                <p>要開開心心過每一天喔~</p>
+                                                <p><?php echo $m_rs['guestSubject'];?></p>
                                             </a>
                                         </li>
+                                        <?php }?>
                                         <!-- end message -->
                                     </ul>
                                     <!-- /.menu -->
                                 </li>
-                                <li class="footer"><a href="#">查看所有新留言</a></li>
+                                <?php }?>
+                                <li class="footer"><a href="http://ntcucsintern.ddns.net/backstage-AdminLTE/MessageBoard.php?guestContentType=%E6%9C%AA%E8%AE%80&sortorder=guestTime&sortway=desc">查看所有新留言</a></li>
                             </ul>
                         </li>
                         <!-- /.messages-menu -->
@@ -126,18 +140,18 @@ desired effect
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="dist/img/user_maji.png" class="user-image" alt="User Image">
+                                <img src="<?php echo $_SESSION['user']['img_src'];?>" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">管理者1</span>
+                                <span class="hidden-xs"><?php ?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="dist/img/user_maji.png" class="img-circle" alt="User Image">
+                                    <img src="<?php echo $_SESSION['user']['img_src'];?>" class="img-circle" alt="User Image">
 
                                     <p>
-                                        管理者1
-                                        <small>從2017年7月開始擔任</small>
+                                        <?php echo $_SESSION['user']['name'];?>
+                                        <small>從<?php echo $_SESSION['user']['in_time'];?>開始擔任</small>
                                     </p>
                                 </li>
                                 
@@ -163,10 +177,10 @@ desired effect
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="dist/img/user_maji.png" class="img-circle" alt="User Image">
+                        <img src="<?php echo $_SESSION['user']['img_src'];?>" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>管理者1</p>
+                        <p><?php echo $_SESSION['user']['name'];?></p>
                         <!-- Status -->
                         <a href="#"><i class="fa fa-circle text-success"></i> 上線中 </a>
                     </div>
