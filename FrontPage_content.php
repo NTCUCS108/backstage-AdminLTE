@@ -7,7 +7,7 @@
                     <button type="link" pull-right class="btn btn-primary">投影片編輯</button>
                 </a>
                 <br><br>
-                <a href="#">
+                <a href="Circle_edit.php">
                     <button type="link" pull-right class="btn btn-primary">圈圈編輯</button>
                 </a>
                 <br><br>
