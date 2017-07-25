@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
                     <li><a href="starter.php"><i class="fa fa-edit"></i>管理者後台</a></li>
                     <li class="active"><a href='http://ntcucsintern.ddns.net/backstage-AdminLTE/FrontPage.php'>首頁</a></li>
-					<li class="active"><a href='http://ntcucsintern.ddns.net/backstage-AdminLTE/Circle_edit.php'>投影片編輯</a></li>
+					<li class="active"><a href='http://ntcucsintern.ddns.net/backstage-AdminLTE/Featurette_edit.php'>列列編輯</a></li>
                 </ol>
