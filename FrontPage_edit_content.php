@@ -12,7 +12,7 @@
                                     <textarea id="editor1" name="editor1" rows="10" cols="80">
                                     
                                     <?php
-                                    echo "$rs[1]";
+                                    echo "$rs[content]";
                                     ?>
                                     
                                     <script type="text/javascript">

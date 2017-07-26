@@ -2,6 +2,16 @@
 session_start();
 if($_SESSION['login']!="yes")
 	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
+include("carousel_connect.php");
+$data=mysql_query("select * from homepage"); 
+$rs=mysql_fetch_assoc($data);
+if($_POST['editor1']!='')
+{
+	$edittime = date("Y-m-d G:i:s");
+	mysql_query("insert into edit_homepage value('$rs[content]','$edittime')");
+    mysql_query("update homepage set content = '$_POST[editor1]',recent_edit_time = '$edittime'");
+    header("location:FrontPage.php");
+}
 ob_start();                      // start capturing output
 include('FrontPage_edit_header.php');   // execute the file
 $header = ob_get_contents();    // get the contents from the buffer
