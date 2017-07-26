@@ -20,7 +20,8 @@
 					<tr>
 						<td width="5%"><input calss="form-control" type='checkbox' name='delete[]' value='<?php echo "$rs[featurette_id]";?>'></td>
 						<td width="10%">列列編號:<?php echo "$rs[featurette_id]";?></td>
-						<td width="85%">列列標題:<?php echo "<a href='Featurette_detail.php?id=$rs[featurette_id]'>$rs[headers]</a>";?></td>
+						<td width="50%">列列標題:<?php echo "<a href='Featurette_detail.php?id=$rs[featurette_id]'>$rs[headers]</a>";?></td>
+						<td width="35%">最後編輯時間:<?php echo "$rs[recent_edit_time]";?></td>
 					</tr>
 				</table>
 				<?php

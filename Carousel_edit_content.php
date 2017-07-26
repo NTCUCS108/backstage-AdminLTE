@@ -4,7 +4,7 @@
 <div class="col-md-offset-2 col-md-8">
 <div class="box">
 			
-				<h1 align='center'>管理首頁板</h1>
+				<h1 align='center'>管理投影片板</h1>
 				<br>
 			<div class="box-header">
 				<button class="btn btn-success pull-left" onclick="location.href='./Carousel_post.php'">新增投影片</button>
@@ -20,7 +20,8 @@
 					<tr>
 						<td width="5%"><input calss="form-control" type='checkbox' name='delete[]' value='<?php echo "$rs[slide_id]";?>'></td>
 						<td width="10%">投影片編號:<?php echo "$rs[slide_id]";?></td>
-						<td width="85%">投影片標題:<?php echo "<a href='Carousel_detail.php?id=$rs[slide_id]'>$rs[headers]</a>";?></td>
+						<td width="50%">投影片標題:<?php echo "<a href='Carousel_detail.php?id=$rs[slide_id]'>$rs[headers]</a>";?></td>
+						<td width="35%">最後編輯時間:<?php echo "$rs[recent_edit_time]";?></td>
 					</tr>
 				</table>
 				<?php

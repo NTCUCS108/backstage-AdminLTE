@@ -14,31 +14,31 @@
                     <button type="link" pull-right class="btn btn-primary">投影片編輯</button>
                 </a>
                 <?php
-                    $slide_edit_time = mysql_query("select * from edit_slide order by time desc limit 0,1");
+                    $slide_edit_time = mysql_query("select * from slide order by recent_edit_time desc limit 0,1");
                     $s_rs = mysql_fetch_assoc($slide_edit_time);
                 ?>
                 <br>
-                最後於<?php echo $s_rs['time'];?>編輯
+                最後於<?php echo $s_rs['recent_edit_time'];?>編輯
                 <br><br>
                 <a href="Circle_edit.php">
                     <button type="link" pull-right class="btn btn-primary">圈圈編輯</button>
                 </a>
                 <?php
-                    $circle_edit_time = mysql_query("select * from edit_circle order by time desc limit 0,1");
+                    $circle_edit_time = mysql_query("select * from circle order by recent_edit_time desc limit 0,1");
                     $c_rs = mysql_fetch_assoc($circle_edit_time);
                 ?>
                 <br>
-                最後於<?php echo $c_rs['time'];?>編輯
+                最後於<?php echo $c_rs['recent_edit_time'];?>編輯
                 <br><br>
                 <a href="Featurette_edit.php">
                     <button type="link" pull-right class="btn btn-primary">列列編輯</button>
                 </a>
                 <?php
-                    $row_edit_time = mysql_query("select * from edit_featurette order by time desc limit 0,1");
+                    $row_edit_time = mysql_query("select * from featurette order by recent_edit_time desc limit 0,1");
                     $r_rs = mysql_fetch_assoc($row_edit_time);
                 ?>
                 <br>
-                最後於<?php echo $r_rs['time'];?>編輯
+                最後於<?php echo $r_rs['recent_edit_time'];?>編輯
         </div>
 </div>
 </div>

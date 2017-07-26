@@ -33,6 +33,10 @@
 						<td width="20%"><?php echo "介紹：";?></td>
 						<td width="80%"><?php echo "$rs[description]";?></td>
 					</tr>
+					<tr>
+						<td width="20%"><?php echo "最後編輯時間：";?></td>
+						<td width="80%"><?php echo "$rs[recent_edit_time]";?></td>
+					</tr>
 				</table>
 				<div class="col-md-offset-3 col-md-1">
 						<a href="Featurette_edit_mode_select.php?id=<?php echo "$rs[featurette_id]"?>" class="btn btn-success">編輯</a>

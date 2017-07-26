@@ -20,7 +20,8 @@
 					<tr>
 						<td width="5%"><input calss="form-control" type='checkbox' name='delete[]' value='<?php echo "$rs[circle_id]";?>'></td>
 						<td width="10%">圈圈編號:<?php echo "$rs[circle_id]";?></td>
-						<td width="85%">圈圈標題:<?php echo "<a href='Circle_detail.php?id=$rs[circle_id]'>$rs[headers]</a>";?></td>
+						<td width="50%">圈圈標題:<?php echo "<a href='Circle_detail.php?id=$rs[circle_id]'>$rs[headers]</a>";?></td>
+						<td width="35%">最後編輯時間:<?php echo "$rs[recent_edit_time]";?></td>
 					</tr>
 				</table>
 				<?php

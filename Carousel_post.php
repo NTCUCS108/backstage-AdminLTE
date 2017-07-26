@@ -38,24 +38,23 @@ if(isset($headers) or isset($description) or isset($icon) or isset($link_src) or
 			$_SESSION['img_src'] = substr($_SESSION['img_src'],3);//upload/test.php問題 因此需要去掉../
 		if($_GET['use_original_pic']=="false")
 		{
-			$edittime = date("Y/m/d G:i:s");
 			$deletepath = explode("/img/","$rs[img_src]");
 			rename("$rs[img_src]","$deletepath[0]/delete_img/$deletepath[1]");
-			mysql_query("Insert into edit_slide value('$deletepath[0]/delete_img/$deletepath[1]','$rs[headers]','$rs[description]','$rs[icon]','$rs[link_src]','$edittime','$rs[post_id]')");
+			mysql_query("Insert into edit_slide value('$deletepath[0]/delete_img/$deletepath[1]','$rs[headers]','$rs[description]','$rs[icon]','$rs[link_src]','$rs[recent_edit_time]','$rs[post_id]')");
 		}
 		elseif($_GET['use_original_pic']=="true")
 		{
-			$edittime = date("Y/m/d G:i:s");
-			mysql_query("Insert into edit_slide value('$rs[img_src]','$rs[headers]','$rs[description]','$rs[icon]','$rs[link_src]','$edittime','$rs[post_id]')");
+			mysql_query("Insert into edit_slide value('$rs[img_src]','$rs[headers]','$rs[description]','$rs[icon]','$rs[link_src]','$rs[recent_edit_time]','$rs[post_id]')");
 		}
 		if(isset($_GET['id']))
 		{
-			mysql_query("update slide set headers = '$headers',description = '$description',icon = '$icon',link_src = '$link_src',img_src = '$_SESSION[img_src]' where slide_id = '$id'");
+			$edittime = date("Y-m-d G:i:s");
+			mysql_query("update slide set headers = '$headers',description = '$description',icon = '$icon',link_src = '$link_src',img_src = '$_SESSION[img_src]',recent_edit_time = '$edittime' where slide_id = '$id'");
 		}
 		else
 		{
 			$createtime = date("Y/m/d G:i:s");
-			mysql_query("Insert into slide value('','$id','$_SESSION[img_src]','$headers','$description','$icon','$link_src','$createtime','')");
+			mysql_query("Insert into slide value('','$id','$_SESSION[img_src]','$headers','$description','$icon','$link_src','$createtime','','$createtime')");
 		}
 		unset($_SESSION["img_src"]);
 		header("location:Carousel_edit.php");

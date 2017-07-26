@@ -34,24 +34,24 @@ if(isset($headers) or isset($description) or isset($_SESSION['img_src']))
 			$_SESSION['img_src'] = substr($_SESSION['img_src'],3);//upload/test.php問題 因此需要去掉../
 		if($_GET['use_original_pic']=="false")
 		{
-			$edittime = date("Y-m-d G:i:s");
 			$deletepath = explode("/img/","$rs[img_src]");
 			rename("$rs[img_src]","$deletepath[0]/delete_img/$deletepath[1]");
-			mysql_query("Insert into edit_featurette value('$deletepath[0]/delete_img/$deletepath[1]','$rs[headers]','$rs[description]','$edittime','$rs[post_id]')");
+			mysql_query("Insert into edit_featurette value('$deletepath[0]/delete_img/$deletepath[1]','$rs[headers]','$rs[description]','$rs[recent_edit_time]','$rs[post_id]')");
 		}
 		elseif($_GET['use_original_pic']=="true")
 		{
-			$edittime = date("Y-m-d G:i:s");
-			mysql_query("Insert into edit_featurette value('$rs[img_src]','$rs[headers]','$rs[description]','$edittime','$rs[post_id]')");
+			mysql_query("Insert into edit_featurette value('$rs[img_src]','$rs[headers]','$rs[description]','$rs[recent_edit_time]','$rs[post_id]')");
 		}
 		if(isset($_GET['id']))
 		{
-			mysql_query("update featurette set headers = '$headers',description = '$description',img_src = '$_SESSION[img_src]' where featurette_id = '$id'");
+
+			$edittime = date("Y-m-d G:i:s");
+			mysql_query("update featurette set headers = '$headers',description = '$description',img_src = '$_SESSION[img_src]',recent_edit_time = '$edittime' where featurette_id = '$id'");
 		}
 		else
 		{
 			$createtime = date("Y-m-d G:i:s");
-			mysql_query("Insert into featurette value('','$id','$_SESSION[img_src]','$headers','$description','$createtime','')");
+			mysql_query("Insert into featurette value('','$id','$_SESSION[img_src]','$headers','$description','$createtime','','$createtime')");
 		}
 		unset($_SESSION["img_src"]);
 		header("location:Featurette_edit.php");
