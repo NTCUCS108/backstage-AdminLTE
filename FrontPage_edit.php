@@ -8,7 +8,7 @@ $rs=mysql_fetch_assoc($data);
 if($_POST['editor1']!='')
 {
 	$edittime = date("Y-m-d G:i:s");
-	mysql_query("insert into edit_homepage value('$rs[content]','$edittime')");
+	mysql_query("insert into edit_homepage value('$rs[content]','$rs[recent_edit_time]')");
     mysql_query("update homepage set content = '$_POST[editor1]',recent_edit_time = '$edittime'");
     header("location:FrontPage.php");
 }

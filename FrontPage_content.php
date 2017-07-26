@@ -13,30 +13,51 @@
                 <a href="Carousel_edit.php">
                     <button type="link" pull-right class="btn btn-primary">投影片編輯</button>
                 </a>
+                <?php
+                    $slide_edit_time = mysql_query("select * from edit_slide order by time desc limit 0,1");
+                    $s_rs = mysql_fetch_assoc($slide_edit_time);
+                ?>
+                <br>
+                最後於<?php echo $s_rs['time'];?>編輯
                 <br><br>
                 <a href="Circle_edit.php">
                     <button type="link" pull-right class="btn btn-primary">圈圈編輯</button>
                 </a>
+                <?php
+                    $circle_edit_time = mysql_query("select * from edit_circle order by time desc limit 0,1");
+                    $c_rs = mysql_fetch_assoc($circle_edit_time);
+                ?>
+                <br>
+                最後於<?php echo $c_rs['time'];?>編輯
                 <br><br>
                 <a href="Featurette_edit.php">
                     <button type="link" pull-right class="btn btn-primary">列列編輯</button>
                 </a>
+                <?php
+                    $row_edit_time = mysql_query("select * from edit_featurette order by time desc limit 0,1");
+                    $r_rs = mysql_fetch_assoc($row_edit_time);
+                ?>
+                <br>
+                最後於<?php echo $r_rs['time'];?>編輯
         </div>
 </div>
 </div>
 <div class="col-md-7">
 <div class="box">
+<?php
+    $editor_homepage = mysql_query("select * from homepage");
+    $e_rs = mysql_fetch_assoc($editor_homepage);
+?>
         <div class="box-header">
         
                     <a href="FrontPage_edit.php">
                         <button type="link" pull-right class="btn btn-primary">編輯</button>
                     </a>
-            
+                    最後於<?php echo $e_rs['recent_edit_time'];?>編輯
         </div>
         <div class="box-body">
             <?php
-                $editor_homepage = mysql_query("select * from homepage");
-                $e_rs = mysql_fetch_assoc($editor_homepage);
+                
                 echo "$e_rs[content]";
             ?>
         </div>

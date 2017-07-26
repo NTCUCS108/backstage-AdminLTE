@@ -7,18 +7,11 @@
                         編輯
                         </button>
                     </a>
+                    最後於<?php $rs = mysql_fetch_row($data); echo $rs[1];?>編輯
           </div>
           <div class="box-body">
                     <h3>
-                    <?php
-                    for($i=1;$i<=mysql_num_rows($data);$i++)
-                    {
-                        $rs = mysql_fetch_row($data);
-                    ?>
                     <?php echo $rs[0] ?>
-                    <?php
-                    }
-                    ?>
                     </h3>
           </div>
 </div>
