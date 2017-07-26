@@ -10,8 +10,8 @@ $rs=mysql_fetch_row($data);
 if($_POST['editor1']!='')
 {
 	$edittime = date("Y-m-d G:i:s");
-	mysql_query("insert into edit_connectways value('$rs[0]','$edittime')");
-    mysql_query("update connectways set connectways = '$_POST[editor1]'");
+	mysql_query("insert into edit_connectways value('$rs[0]','$rs[1]')");
+    mysql_query("update connectways set connectways = '$_POST[editor1]',recent_edit_time = '$edittime'");
     header("location:ConnectWays.php");
 }
 ob_start();                      // start capturing output

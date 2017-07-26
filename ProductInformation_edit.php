@@ -9,7 +9,9 @@ $data=mysql_query("select * from product"); //從contact資料庫中選擇所有
 $rs=mysql_fetch_row($data);
 if($_POST['editor1']!='')
 {
-    mysql_query("update product set detail = '$_POST[editor1]'");
+	$edittime = date("Y-m-d G:i:s");
+	mysql_query("insert into edit_product value('$rs[0]','$rs[1]','$rs[2]')");
+    mysql_query("update product set detail = '$_POST[editor1]',recent_edit_time = '$edittime'");
     header("location:ProductInformation.php");
 }
 ob_start();                      // start capturing output
