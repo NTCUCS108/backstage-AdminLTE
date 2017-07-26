@@ -18,7 +18,8 @@
 					<tr>
 						<td width="15%"><input type='checkbox' name='delete[]' value='<?php echo "$rs[name]";?>'></td>
 						<td width="15%"><?php echo "$rs[parent]";?></td>
-						<td width="70%"><a href='./Page_browse.php?name=<?php echo "$rs[name]";?>'><?php echo "$rs[name]";?></a></td>
+						<td width="35%"><a href='./Page_browse.php?name=<?php echo "$rs[name]";?>'><?php echo "$rs[name]";?></a></td>
+						<td width="35%">最後編輯時間<?php echo "$rs[recent_edit_time]";?></td>
 					</tr>
 				</table>
 				<?php

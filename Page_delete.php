@@ -8,7 +8,7 @@ if(!isset($_GET['name']))
 $name = $_GET["name"];
 $data = mysql_query("select * from page where name = '$name'");
 $rs = mysql_fetch_assoc($data);
-$deletetime=date("Y/m/d G:i:s");
-mysql_query("update page set dead_time = '$deletetime' where name = '$rs[name]'");
+$deletetime=date("Y-m-d G:i:s");
+mysql_query("update page set dead_time = '$deletetime',recent_edit_time = '$deletetime' where name = '$rs[name]'");
 header("location:Page.php");
 ?>

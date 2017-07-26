@@ -14,8 +14,8 @@ if(isset($_POST['name']))
 }
 if($_POST['editor1'] != '' and $_POST['name'] != '')
 {
-	$createtime =  date("Y/m/d G:i:s");
-    mysql_query("Insert into page value('','$_POST[name]','$_POST[parent]','$createtime','')");
+	$createtime =  date("Y-m-d G:i:s");
+    mysql_query("Insert into page value('','$_POST[name]','$_POST[parent]','$createtime','','$createtime')");
 	mysql_query("Insert into page_data value('$_POST[editor1]','$_POST[name]')");
     header("location:Page.php");
 }
