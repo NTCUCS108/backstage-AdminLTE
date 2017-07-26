@@ -15,7 +15,7 @@ if(isset($guestReply))
 {
 	$time = date("Y-m-d G:i:s");
 	mysql_query("update comment set guestReply='$guestReply',guestReplyTime='$time' where guestID='$id'");
-	header("location:MessageBoard.php");
+	header("location:MessageBoard.php?guestContentType=未回覆&sortorder=guestTime&sortway=desc");
 }
 ob_start();                      // start capturing output
 include('MessageBoard_reply_header.php');   // execute the file
