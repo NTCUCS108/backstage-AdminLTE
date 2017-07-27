@@ -2,9 +2,9 @@
 session_start();
 if($_SESSION['login']!="yes")
 	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
-include("carousel_connect.php");
+include("homepage_connect.php");
 if(isset($_GET['id']) xor isset($_GET['use_original_pic']))
-	header("Location: Carousel_edit.php");
+	header("Location: Slide.php");
 if(isset($_GET['id']))
 {
 	$id=$_GET['id'];
@@ -57,21 +57,21 @@ if(isset($headers) or isset($description) or isset($icon) or isset($link_src) or
 			mysql_query("Insert into slide value('','$id','$_SESSION[img_src]','$headers','$description','$icon','$link_src','$createtime','','$createtime')");
 		}
 		unset($_SESSION["img_src"]);
-		header("location:Carousel_edit.php");
+		header("location:Slide.php");
 		exit();
 	}
 }
 ob_start();                      // start capturing output
-include('Carousel_post_header.php');   // execute the file
+include('Slide_post_header.php');   // execute the file
 $header = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
-include('Carousel_post_content.php');   // execute the file
+include('Slide_post_content.php');   // execute the file
 $content = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
-include('carousel_script.php');   // execute the file
+include('Slide_script.php');   // execute the file
 $script = ob_get_contents();    // get the contents from the buffer
-ob_end_clean(); 
+ob_end_clean();
 include("master.php");
 ?>

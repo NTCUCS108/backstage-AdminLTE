@@ -2,23 +2,21 @@
 session_start();
 if($_SESSION['login']!="yes")
 	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
-include("carousel_connect.php");
-$id = $_GET["id"];
-if(!isset($id))
-	header("location:Carousle_edit.php");
-$data=mysql_query("select * from slide where slide_id = '$id'");
-$rs=mysql_fetch_assoc($data);
+include("homepage_connect.php");
+//checkbox批次刪除
+if(!isset($_GET['id']))
+	header("Location: Slide.php");
 ob_start();                      // start capturing output
-include('Carousel_detail_header.php');   // execute the file
+include('Slide_edit_mode_select_header.php');   // execute the file
 $header = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
-include('Carousel_detail_content.php');   // execute the file
+include('Slide_edit_mode_select_content.php');   // execute the file
 $content = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
-include('carousel_script.php');   // execute the file
+include('Slide_script.php');   // execute the file
 $script = ob_get_contents();    // get the contents from the buffer
-ob_end_clean(); 
+ob_end_clean();
 include("master.php");
 ?>

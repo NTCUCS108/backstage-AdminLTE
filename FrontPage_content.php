@@ -9,8 +9,8 @@
 <div class="col-md-3">
 <div class="box">
         <div class="box-header">
-        
-                <a href="Carousel_edit.php">
+
+                <a href="Slide.php">
                     <button type="link" pull-right class="btn btn-primary">投影片編輯</button>
                 </a>
                 <?php
@@ -20,7 +20,7 @@
                 <br>
                 最後於<?php echo $s_rs['recent_edit_time'];?>編輯
                 <br><br>
-                <a href="Circle_edit.php">
+                <a href="Circle.php">
                     <button type="link" pull-right class="btn btn-primary">圈圈編輯</button>
                 </a>
                 <?php
@@ -30,7 +30,7 @@
                 <br>
                 最後於<?php echo $c_rs['recent_edit_time'];?>編輯
                 <br><br>
-                <a href="Featurette_edit.php">
+                <a href="Featurette.php">
                     <button type="link" pull-right class="btn btn-primary">列列編輯</button>
                 </a>
                 <?php
@@ -49,7 +49,7 @@
     $e_rs = mysql_fetch_assoc($editor_homepage);
 ?>
         <div class="box-header">
-        
+
                     <a href="FrontPage_edit.php">
                         <button type="link" pull-right class="btn btn-primary">編輯</button>
                     </a>
@@ -57,7 +57,7 @@
         </div>
         <div class="box-body">
             <?php
-                
+
                 echo "$e_rs[content]";
             ?>
         </div>

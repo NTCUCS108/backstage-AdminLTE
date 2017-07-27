@@ -2,7 +2,7 @@
 session_start();
 if($_SESSION['login']!="yes")
 	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
-include("carousel_connect.php");
+include("homepage_connect.php");
 //checkbox批次刪除
 if(isset($_POST['delete']))
 {
@@ -25,16 +25,16 @@ for($i=0;$i<mysql_num_rows($data);$i++)
 }
 $data=mysql_query("select * from circle where circle_id != '-1' order by circle_id");
 ob_start();                      // start capturing output
-include('Circle_edit_header.php');   // execute the file
+include('Circle_header.php');   // execute the file
 $header = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
-include('Circle_edit_content.php');   // execute the file
+include('Circle_content.php');   // execute the file
 $content = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
 include('Circle_script.php');   // execute the file
 $script = ob_get_contents();    // get the contents from the buffer
-ob_end_clean(); 
+ob_end_clean();
 include("master.php");
 ?>

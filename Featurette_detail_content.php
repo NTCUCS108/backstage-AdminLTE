@@ -5,13 +5,13 @@
 <div class="box">
 				<h1 align="center">第<?php echo $id;?>個列列</h1><br>
 				<div class="box-header">
-				<div class="col-md-offset-4 col-md-4">	
+				<div class="col-md-offset-4 col-md-4">
 					<p align="center">
-						<button class="btn btn-primary" onclick="location.href = 'Featurette_edit.php';">回管理列列板</button><br>
+						<button class="btn btn-primary" onclick="location.href = 'Featurette.php';">回管理列列板</button><br>
 					</p>
 				</div>
 				</div>
-	
+
 	<div class="box-body">
 				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
@@ -44,7 +44,7 @@
 				<div class="col-md-offset-4 col-md-1">
 						<a href="Featurette_delete.php?id=<?php echo "$rs[featurette_id]"?>" class="btn btn-warning">刪除</a>
 				</div>
-				
+
 	</div>
 </div>
 </div>

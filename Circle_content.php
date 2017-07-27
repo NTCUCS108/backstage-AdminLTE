@@ -3,13 +3,13 @@
 <div class="row">
 <div class="col-md-offset-2 col-md-8">
 <div class="box">
-			
+
 				<h1 align='center'>管理圈圈</h1>
 				<br>
 			<div class="box-header">
 				<button class="btn btn-success pull-left" onclick="location.href='./Circle_post.php'">新增圈圈</button>
 			</div>
-			<div class="box-body">	
+			<div class="box-body">
 				<form name='delete_homepage' method='post'>
 				<input class="btn btn-warning" type='submit' value='刪除勾選圈圈'>
 				<?php

@@ -2,9 +2,9 @@
 session_start();
 if($_SESSION['login']!="yes")
 	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
-include("carousel_connect.php");
+include("homepage_connect.php");
 if(isset($_GET['id']) xor isset($_GET['use_original_pic']))
-	header("Location: Circle_edit.php");
+	header("Location: Circle.php");
 if(isset($_GET['id']))
 {
 	$id=$_GET['id'];
@@ -57,7 +57,7 @@ if(isset($headers) or isset($description) or isset($icon) or isset($link_src) or
 			mysql_query("Insert into circle value('','$id','$_SESSION[img_src]','$headers','$description','$icon','$link_src','$createtime','','$createtime')");
 		}
 		unset($_SESSION["img_src"]);
-		header("location:Circle_edit.php");
+		header("location:Circle.php");
 		exit();
 	}
 }
@@ -72,6 +72,6 @@ ob_end_clean();                  // stop buffering and discard contents
 ob_start();                      // start capturing output
 include('Circle_script.php');   // execute the file
 $script = ob_get_contents();    // get the contents from the buffer
-ob_end_clean(); 
+ob_end_clean();
 include("master.php");
 ?>

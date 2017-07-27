@@ -3,8 +3,8 @@ session_start();
 if($_SESSION['login'] != "yes")
 	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
 if(!isset($_GET['id']))
-	header("location:Circle_edit.php");
-include("carousel_connect.php");
+	header("location:Circle.php");
+include("homepage_connect.php");
 $id = $_GET['id'];
 //echo $_GET['id'];
 $data=mysql_query("select * from circle where circle_id = '$id'");
@@ -19,5 +19,5 @@ for($i=0;$i<mysql_num_rows($data);$i++)
 	$rs = mysql_fetch_assoc($data);
 	mysql_query("update circle set circle_id = '$i' where circle_id='$rs[circle_id]'");
 }
-header("location:Circle_edit.php");
+header("location:Circle.php");
 ?>

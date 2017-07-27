@@ -5,13 +5,13 @@
 <div class="box">
 				<h1 align="center">第<?php echo $id;?>則投影</h1><br>
 				<div class="box-header">
-				<div class="col-md-offset-4 col-md-4">	
+				<div class="col-md-offset-4 col-md-4">
 					<p align="center">
-						<button class="btn btn-primary" onclick="location.href = 'Carousel_edit.php';">回管理首頁板</button><br>
+						<button class="btn btn-primary" onclick="location.href = 'Slide.php';">回管理首頁板</button><br>
 					</p>
 				</div>
 				</div>
-	
+
 	<div class="box-body">
 				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
@@ -47,12 +47,12 @@
 					</tr>
 				</table>
 				<div class="col-md-offset-3 col-md-1">
-						<a href="Carousel_edit_mode_select.php?id=<?php echo "$rs[slide_id]"?>" class="btn btn-success">編輯</a>
+						<a href="Slide_edit_mode_select.php?id=<?php echo "$rs[slide_id]"?>" class="btn btn-success">編輯</a>
 				</div>
 				<div class="col-md-offset-4 col-md-1">
-						<a href="Carousel_delete.php?id=<?php echo "$rs[slide_id]"?>" class="btn btn-warning">刪除</a>
+						<a href="Slide_delete.php?id=<?php echo "$rs[slide_id]"?>" class="btn btn-warning">刪除</a>
 				</div>
-				
+
 	</div>
 </div>
 </div>
