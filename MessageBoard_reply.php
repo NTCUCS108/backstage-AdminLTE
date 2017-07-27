@@ -14,6 +14,7 @@ $rs = mysql_fetch_assoc($data);
 if(isset($guestReply))
 {
 	$time = date("Y-m-d G:i:s");
+	$guestReply = str_replace("\n","<br>",$guestReply);
 	mysql_query("update comment set guestReply='$guestReply',guestReplyTime='$time' where guestID='$id'");
 	header("location:MessageBoard.php?guestContentType=未回覆&sortorder=guestTime&sortway=desc");
 }
