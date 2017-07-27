@@ -32,15 +32,15 @@
 						<td width="80%"><?php echo $rs[guestTime];?></td>
 					</tr>
 				</table>
-		</div>		
+		</div>
 				<br>
 				<form id="reply_form" name="reply_form" method="post" align="center">
 
 				回覆內容
-				<br><textarea name="reply" id="reply" style="width:60%;" rows="8"></textarea><br>
+				<br><textarea name="reply" id="reply" style="width:60%;" rows="8"><?php echo "$rs[guestReply]";?></textarea><br>
 				<input type="submit" class="btn btn-success" value="送出">
 				</form>
 	</div>
 </div>
 </div>
-</section>			
+</section>
