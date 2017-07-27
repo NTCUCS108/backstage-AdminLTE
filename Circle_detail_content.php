@@ -15,7 +15,8 @@
 	<div class="box-body">
 				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
-						<td width="20%"><?php echo "圈圈id：$rs[circle_id]";?></td>
+						<td width="20%"><?php echo "圈圈id：";?></td>
+						<td width="80%"><?php echo "$rs[circle_id]";?></td>
 					</tr>
 					<tr>
 						<td width="20%"><?php echo "圖片位置：";?></td>
