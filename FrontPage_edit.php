@@ -2,8 +2,8 @@
 session_start();
 if($_SESSION['login']!="yes")
 	header("Location: ../bootstrap-3.3.1/docs/examples/signin/signin.php");
-include("carousel_connect.php");
-$data=mysql_query("select * from homepage"); 
+include("homepage_connect.php");
+$data=mysql_query("select * from homepage");
 $rs=mysql_fetch_assoc($data);
 if($_POST['editor1']!='')
 {

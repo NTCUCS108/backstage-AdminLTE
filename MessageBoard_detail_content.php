@@ -7,7 +7,7 @@
 		<div class="box-header">
 			<h1 align="center">第<?php echo $id;?>則留言</h1>
 		</div>
-		<!-- /.box-header -->		
+		<!-- /.box-header -->
 				<br><br><br>
 			<div class="box-body" class="col-md-8 col-md-offset-2">
 				<table align="center" width="60%" border="1" class="table table-bordered">
@@ -57,7 +57,7 @@
 					<?php } ?>
 				</table>
 			</div>
-	
+
 				<br>
 				<div class="box-tools">
 				<p align="center">
