@@ -74,10 +74,6 @@ ob_start();                      // start capturing output
 include('MessageBoard_script.php');   // execute the file
 $script = ob_get_contents();    // get the contents from the buffer
 ob_end_clean();                  // stop buffering and discard contents
-$_SESSION['havenot_read_data'] = mysql_query("select * from comment where admin_read = '0'");
-$_SESSION['havenot_read_num'] = mysql_num_rows($_SESSION['havenot_read_data']);
-$_SESSION['havenot_reply_data'] = mysql_query("select * from comment where guestReply = ''");
-$_SESSION['havenot_reply_num'] = mysql_num_rows($_SESSION['havenot_reply_data']);
 include("master.php");
 
 ?>

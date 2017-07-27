@@ -1,3 +1,11 @@
+<?php
+mysql_close();
+include("message_connect.php");
+$havenot_read_data = mysql_query("select * from comment where admin_read = '0'");
+$havenot_read_num = mysql_num_rows($havenot_read_data);
+$havenot_reply_data = mysql_query("select * from comment where guestReply = ''");
+$havenot_reply_num = mysql_num_rows($havenot_reply_data);
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -88,14 +96,12 @@ desired effect
                             <!-- Menu toggle button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="label label-danger"><?php echo $_SESSION[havenot_read_num]+$_SESSION[havenot_reply_num];?></span>
+                                <span class="label label-danger"><?php echo $havenot_read_num+$havenot_reply_num;?></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header"><a href="MessageBoard.php?guestContentType=未讀">系統有<?php echo "$_SESSION[havenot_read_num]";?>則未讀留言!</a></li>
-								<li class="header"><a href="MessageBoard.php?guestContentType=未回覆">系統有<?php echo "$_SESSION[havenot_reply_num]";?>則未回覆留言!</a></li>
+                                <li class="header"><a href="MessageBoard.php?guestContentType=未讀">系統有<?php echo $havenot_read_num;?>則未讀留言!</a></li>
+								<li class="header"><a href="MessageBoard.php?guestContentType=未回覆">系統有<?php echo $havenot_reply_num;?>則未回覆留言!</a></li>
                                 <?php 
-                                    mysql_close();
-                                    include("message_connect.php");
                                     $message = mysql_query("select * from comment where admin_read = '0' order by guestTime desc limit 0,3");
                                     if(mysql_num_rows($message)>0)
                                     {
