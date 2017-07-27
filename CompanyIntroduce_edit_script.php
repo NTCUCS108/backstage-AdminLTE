@@ -24,13 +24,13 @@
             height: 300,
 
             // Upload images to a CKFinder connector (note that the response type is set to JSON).
-            uploadUrl: 'http://ntcucsintern/backstage-AdminLTE/img/',
+            uploadUrl: 'http://ntcucsintern/backstage-AdminLTE/img/php/upload.php.php',
 
             // Configure your file manager integration. This example uses CKFinder 3 for PHP.
-            filebrowserBrowseUrl: 'http://ntcucsintern/backstage-AdminLTE/img/',
-            filebrowserImageBrowseUrl: 'http://ntcucsintern/backstage-AdminLTE/img/',
-            filebrowserUploadUrl: 'http://ntcucsintern/backstage-AdminLTE/img/',
-            filebrowserImageUploadUrl: 'http://ntcucsintern/backstage-AdminLTE/img/',
+            filebrowserBrowseUrl: 'http://ntcucsintern/backstage-AdminLTE/img/php/upload.php.php',
+            filebrowserImageBrowseUrl: 'http://ntcucsintern/backstage-AdminLTE/img/php/upload.php.php',
+            filebrowserUploadUrl: 'http://ntcucsintern/backstage-AdminLTE/img/php/upload.php.php',
+            filebrowserImageUploadUrl: 'http://ntcucsintern/backstage-AdminLTE/img/php/upload.php.php',
 
             // The following options are not necessary and are used here for presentation purposes only.
             // They configure the Styles drop-down list and widgets to use classes.
