@@ -101,7 +101,7 @@ desired effect
                             <ul class="dropdown-menu">
                                 <li class="header"><a href="MessageBoard.php?guestContentType=未讀">系統有<?php echo $havenot_read_num;?>則未讀留言!</a></li>
 								<li class="header"><a href="MessageBoard.php?guestContentType=未回覆">系統有<?php echo $havenot_reply_num;?>則未回覆留言!</a></li>
-                                <?php 
+                                <?php
                                     $message = mysql_query("select * from comment where admin_read = '0' order by guestTime desc limit 0,3");
                                     if(mysql_num_rows($message)>0)
                                     {
@@ -109,7 +109,7 @@ desired effect
                                 <li>
                                     <!-- inner menu: contains the messages -->
                                     <ul class="menu">
-                                        <?php 
+                                        <?php
                                             for($i=1;$i<=mysql_num_rows($message);$i++)
                                             {
                                                 $m_rs = mysql_fetch_assoc($message);
@@ -160,7 +160,7 @@ desired effect
                                         <small>從<?php echo $_SESSION['user']['in_time'];?>開始擔任</small>
                                     </p>
                                 </li>
-                                
+
                         </li>
                         <!-- Menu Footer -->
                         <li class="user-footer">
@@ -192,8 +192,8 @@ desired effect
                     </div>
                 </div>
 
-                
-                <!-- search form (Optional) 
+
+                <!-- search form (Optional)
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -206,7 +206,7 @@ desired effect
                  /.search form -->
 
                 <!-- Sidebar Menu -->
-                
+
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">
                     </li>
@@ -240,7 +240,7 @@ desired effect
                         </a>
                     </li>
                     <li>
-                        <a href="../bootstrap-3.3.1/docs/examples/carousel/test_home.php"><i class="glyphicon glyphicon-flag"></i> <span>前台首頁</span>
+                        <a href="../bootstrap-3.3.1/docs/examples/carousel/homepage.php"><i class="glyphicon glyphicon-flag"></i> <span>前台首頁</span>
                         </a>
                     </li>
 
@@ -284,7 +284,7 @@ desired effect
         <!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->
-		
+
         <!-- jQuery 3 -->
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
