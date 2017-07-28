@@ -136,7 +136,6 @@ desired effect
                                     <!-- /.menu -->
                                 </li>
                                 <?php }?>
-                                <li class="footer"><a href="http://ntcucsintern.ddns.net/backstage-AdminLTE/MessageBoard.php?guestContentType=%E6%9C%AA%E8%AE%80&sortorder=guestTime&sortway=desc">查看所有新留言</a></li>
                             </ul>
                         </li>
                         <!-- /.messages-menu -->
