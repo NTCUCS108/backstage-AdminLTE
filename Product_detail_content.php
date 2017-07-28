@@ -7,7 +7,7 @@
 				<div class="box-header">
 				<div class="col-md-offset-4 col-md-4">	
 					<p align="center">
-						<button class="btn btn-primary" onclick="location.href = 'Product_edit.php';">回管理產品板</button><br>
+						<button class="btn btn-primary" onclick="location.href = 'Product_edit.php';">回產品資訊板</button><br>
 					</p>
 				</div>
 				</div>
