@@ -4,7 +4,7 @@
 <div class="col-md-offset-2 col-md-8">
 <div class="box">
 			<div class="box-header">
-				<h1 align="center">新增產品</h1>
+				<h1 align="center">新增/編輯產品</h1>
 			</div>
 			<div class="box-body">
 			<?php
@@ -15,7 +15,8 @@
 				<form method="post">
 				<div class="form-group">
 					產品名稱:<input class="form-control" type='text' name='headers' value="<?php if($_POST['headers'] != '') echo "$_POST[headers]"; else if(isset($rs))echo "$rs[3]";?>"><?php if(isset($check) and $_POST['headers'] == '') echo '<p style="color:red;">請輸入產品名稱</p>';?><br>
-					功能&敘述:<div class="row">
+					產品功能&敘述:
+					<div class="row">
                     <div class="col-md-10">
                         <div class="box box-info">
                             <div class="box-header">
@@ -26,7 +27,7 @@
                             <!-- /.box-header -->
                             <div class="box-body pad">
                                 <form method="post" accept-charset="utf-8">
-                                    <textarea id="editor1" name="editor1" rows="10" cols="80">
+                                    <textarea id="editor1" name="editor1" rows="15" cols="80">
 
                                     <?php
                                     if(isset($rs))echo "$rs[4]";
@@ -40,9 +41,9 @@
                             </div>
                         </div>
                     <!-- /.col-->
-                </div>
+					</div>
                 <!-- ./row -->
-					
+					</div>	
 					
 					
 					<!--<div class="box-header" class="col-md-10 col-md-offset-9">
@@ -56,17 +57,29 @@
 					</div>
 					<!--<input class="form-control" type='text' name='feature' value="<?php //if($_POST['feature'] != '') echo "$_POST[feature]"; else if(isset($rs))echo "$rs[feature]";?>"><br><?php //if(isset($check) and $_POST['feature'] == '') echo '<p style="color:red;">請輸入功能</p>';?>
 					<input class="form-control" type='text' name='description' value="<?php //if($_POST['description'] != '') echo "$_POST[description]"; else if(isset($rs))echo "$rs[description]";?>"><br><?php //if(isset($check) and $_POST['description'] == '') echo '<p style="color:red;">請輸入敘述</p>';?>-->
-					連結:<input class="form-control" type='text' name='link' value="<?php if($_POST['link'] != '') echo "$_POST[link]"; else if(isset($rs))echo "$rs[5]";?>"><br><?php if(isset($check) and $_POST['link'] == '') echo '<p style="color:red;">請輸入連結</p>';?>
-				</div>
-				<div class="form-group">
+					<p>
+					連結名稱(#):<input class="form-control" type='text' name='link' value="<?php if($_POST['link'] != '') echo "$_POST[link]"; else if(isset($rs))echo "$rs[5]";?>"><br><?php if(isset($check) and $_POST['link'] == '') echo '<p style="color:red;">請輸入連結</p>';?>
+				
+				<!--<div class="form-group">
 					<div class="col-md-offset-5 col-md-2">	
 					<input class="btn btn-success form-control" type='submit' value='提交'>
 					</div>
-					<br>
-				</div>
+				</div>-->
+			<div class="form-group">
+				<div class="col-md-8 col-md-offset-2">
+                                    <!-- ***Store Button*** -->
+                                    <div class="pull-left">
+                                         <button type="submit" class="btn btn-success" class="pull-left">儲存編輯</button>
+                                    </div>
+                                    <div class="pull-right">    
+                                        <button type="link" class="btn btn-flat" class="pull-right">取消編輯</button>
+                                    </div>
+                </div>
+			</div>	
 				</form>
-			</div>
+				</div>
 				
+			</div>
 </div>
 </div>
 </div>

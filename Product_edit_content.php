@@ -4,7 +4,7 @@
 <div class="col-md-offset-2 col-md-8">
 <div class="box">
 			
-				<h1 align='center'>管理產品</h1>
+				<h1 align='center'>產品資訊管理</h1>
 				<br>
 			<div class="box-header">
 				<button class="btn btn-success pull-left" onclick="location.href='./Product_post.php'">新增產品</button>
