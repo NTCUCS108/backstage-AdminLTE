@@ -8,6 +8,7 @@
 				<br>
 			<div class="box-header">
 				<button class="btn btn-success pull-left" onclick="location.href='./Slide_post.php'">新增投影片</button>
+				<button class="btn btn-success pull-left" onclick="location.href='./Slide_revival_browse.php'">瀏覽已刪除投影片</button>
 			</div>
 			<div class="box-body">
 				<form name='delete_homepage' method='post'>
