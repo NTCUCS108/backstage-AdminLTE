@@ -218,7 +218,7 @@ desired effect
 
                     <!-- Optionally, you can add icons to the links -->
                     <li>
-                        <a href="ProductInformation.php"><i class="fa fa-link"></i> <span>產品資訊</span>
+                        <a href="Product_edit.php"><i class="fa fa-link"></i> <span>產品資訊</span>
                         </a>
                     </li>
 

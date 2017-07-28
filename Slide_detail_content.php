@@ -15,7 +15,8 @@
 	<div class="box-body">
 				<table align="center" width="60%" border="1" class="table table-bordered">
 					<tr>
-						<td width="20%"><?php echo "投影片id：$rs[slide_id]";?></td>
+						<td width="20%"><?php echo "投影片id：";?></td>
+						<td width="80%"><?php echo "$rs[slide_id]";?></td>
 					</tr>
 					<tr>
 						<td width="20%"><?php echo "圖片位置：";?></td>
