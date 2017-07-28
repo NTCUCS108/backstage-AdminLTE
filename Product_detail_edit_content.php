@@ -1,5 +1,5 @@
 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-10">
                         <div class="box box-info">
                             <div class="box-header">
                                 <h3 class="box-title">HTML語法文字編輯器
@@ -12,9 +12,9 @@
                                     <textarea id="editor1" name="editor1" rows="10" cols="80">
 
                                     <?php
-                                    echo "$rs[1]";
+                                    echo "$rs[4]";
                                     ?>
-                                    
+
                                     <script type="text/javascript">
                                     var content = Document.getElementById('editor1').value;
                                     </script>
@@ -26,7 +26,7 @@
                                     <div class="pull-left">
                                          <button type="submit" class="btn btn-success" class="pull-left">儲存編輯</button>
                                     </div>
-                                    <div class="pull-right">    
+                                    <div class="pull-right">
                                         <button type="link" class="btn btn-flat" class="pull-right">取消編輯</button>
                                     </div>
 
@@ -38,15 +38,3 @@
                     <!-- /.col-->
                 </div>
                 <!-- ./row -->
-
-            <div class="col-md-3">
-            <div class="box">
-                <div class="box-header">
-                    <h4>標題</h4>
-                </div>
-                <div class="box-body">
-                    <p>內容</p>
-                </div>
-            </div>
-            </div>
-</div>
