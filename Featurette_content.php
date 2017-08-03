@@ -3,13 +3,14 @@
 <div class="row">
 <div class="col-md-offset-2 col-md-8">
 <div class="box">
-			
+
 				<h1 align='center'>管理列列板</h1>
 				<br>
 			<div class="box-header">
 				<button class="btn btn-success pull-left" onclick="location.href='./Featurette_post.php'">新增列列</button>
+				<button class="btn btn-success pull-left" onclick="location.href='./Featurette_revival_browse.php'">瀏覽已刪除列列</button>
 			</div>
-			<div class="box-body">	
+			<div class="box-body">
 				<form name='delete_homepage' method='post'>
 				<input class="btn btn-warning" type='submit' value='刪除勾選列列'>
 				<?php
